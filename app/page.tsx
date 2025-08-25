@@ -2,6 +2,7 @@
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
+import { TypewriterText } from "@/components/ui/typewriter-text"
 import { ArrowRight, CheckCircle, Star, ShieldCheck, Clock, Smartphone, DollarSign, Zap } from "lucide-react"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
@@ -198,7 +199,11 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
           {/* Left: Headline and Actions */}
           <div className="flex-1 text-left space-y-8">
             <h1 className="text-5xl md:text-6xl font-bold leading-tight text-gray-900">
-              Sell Old Phone Online for <span className="text-green-600">Instant Cash</span>
+              <span className="block">Sell Old Phone</span>
+              <span className="block">Online for</span>
+              <span className="block text-green-600">
+                <TypewriterText baseText="Instant " words={["Cash", "Save", "Gain"]} />
+              </span>
             </h1>
             <p className="text-xl text-gray-600 max-w-xl">
               Best mobile buyback platform in India. Sell used mobile for cash with instant quotes, free pickup, and
@@ -578,7 +583,7 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
               </div>
               <Link href="/buy-phone">
                 <Button className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-                  Buy second hand Phone
+                  Buy second hand iPhone
                 </Button>
               </Link>
             </div>
