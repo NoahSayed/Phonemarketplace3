@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react"
 
 export function TypewriterText() {
-  const words = ["Cash", "Service", "Sale"]
+  const words = ["Sale", "Care", "Cash"]
   const [text, setText] = useState("")
   const [wordIndex, setWordIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
