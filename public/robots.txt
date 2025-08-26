@@ -1,13 +1,9 @@
 # *
 User-agent: *
 Allow: /
-Disallow: /private
-Disallow: /admin
-Disallow: /dashboard
 
 # Host
-Host: https://selloldphone.com
+Host: https://your-domain.com
 
 # Sitemaps
-Sitemap: https://selloldphone.com/sitemap.xml
-Sitemap: https://selloldphone.com/server-sitemap.xml
+Sitemap: https://your-domain.com/sitemap.xml

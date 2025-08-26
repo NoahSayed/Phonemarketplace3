@@ -3,9 +3,12 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Sell Old Phone Online - Best Mobile Buyback Platform India | Instant Cash for Used Phones",
+  // Add this line to fix the warnings
+  metadataBase: new URL('https://contreat.in'),
+  
+  title: "Sell Old Phone Online | Contreat.in - Instant Cash & Buyback India",
   description:
-    "Sell old phone online for instant cash in India. Best mobile buyback platform with maximum value for used iPhone, Samsung, Google phones. Trade in old mobile for cash with free pickup & guaranteed payments. Sell used mobile online today!",
+    "Sell old phone online on Contreat.in for instant cash in India. Best mobile buyback platform with maximum value for used iPhone, Samsung, Google phones. Trade in old mobile for cash with free pickup & guaranteed payments.",
   keywords: [
     "sell old phone online",
     "sell used mobile for cash",
@@ -26,9 +29,9 @@ export const metadata: Metadata = {
     "sell old smartphone",
     "second hand phone buyers",
   ],
-  authors: [{ name: "Sell Old Phone" }],
-  creator: "Sell Old Phone",
-  publisher: "Sell Old Phone",
+  authors: [{ name: "Contreat" }],
+  creator: "Contreat",
+  publisher: "Contreat",
   robots: {
     index: true,
     follow: true,
@@ -43,14 +46,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://selloldphone.com",
-    siteName: "Sell Old Phone",
-    title: "Sell Old Phone Online - Best Mobile Buyback Platform India",
+    url: "https://contreat.in",
+    siteName: "Contreat",
+    title: "Sell Old Phone Online - Best Mobile Buyback Platform India | Contreat",
     description:
       "Sell old phone online for instant cash. Best mobile buyback platform in India with maximum value for used phones.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.jpg", // Now resolves to https://contreat.in/og-image.jpg
         width: 1200,
         height: 630,
         alt: "Sell Old Phone Online - Mobile Buyback Platform",
@@ -59,12 +62,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sell Old Phone Online - Instant Cash for Used Phones",
+    title: "Sell Old Phone Online - Instant Cash for Used Phones | Contreat",
     description: "Best mobile buyback platform in India. Sell used mobile for cash with instant quotes.",
-    images: ["/twitter-image.jpg"],
+    images: ["/twitter-image.jpg"], // Now resolves to https://contreat.in/twitter-image.jpg
   },
   alternates: {
-    canonical: "https://selloldphone.com",
+    canonical: "https://contreat.in",
   },
   other: {
     "google-site-verification": "your-google-verification-code",
@@ -106,10 +109,10 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "Sell Old Phone",
+              name: "Contreat",
               description: "Best mobile buyback platform in India for selling old phones online",
-              url: "https://selloldphone.com",
-              logo: "https://selloldphone.com/logo.png",
+              url: "https://contreat.in",
+              logo: "https://contreat.in/logo.png",
               contactPoint: {
                 "@type": "ContactPoint",
                 telephone: "+91",
@@ -119,9 +122,9 @@ export default function RootLayout({
                 availableLanguage: ["English", "Hindi"],
               },
               sameAs: [
-                "https://facebook.com/selloldphone",
-                "https://twitter.com/selloldphone",
-                "https://instagram.com/selloldphone",
+                "https://facebook.com/contreat",
+                "https://twitter.com/contreat",
+                "https://instagram.com/contreat",
               ],
               service: {
                 "@type": "Service",

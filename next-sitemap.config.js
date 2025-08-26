@@ -1,87 +1,63 @@
-const { getImagesForPath } = require('./lib/sitemap-helpers');
-const { getLastModified } = require('./lib/lastmod-dates');
-
-/** @type {import('next-sitemap').IConfig} */
+// next-sitemap.config.js
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://selloldphone.com',
+  siteUrl: 'https://your-domain.com',
   generateRobotsTxt: true,
-  exclude: ['/server-sitemap.xml'],
   transform: async (config, path) => {
-    // Get images and lastmod date in parallel for performance
-    const [pageImages, pageLastMod] = await Promise.all([
-      getImagesForPath(path),
-      getLastModified(path)
-    ]);
-
-    // Custom transform function to set different priorities and changefreq based on path
-    const priorityMap = {
-      '/': 1.0,
-      '/about': 0.8,
-      '/contact': 0.7,
-      '/buy-phone': 0.9,
-      '/blog': 0.8,
-    };
-
-    // Set different priorities for different sections
-    const priority = 
-      path.startsWith('/brand/apple') ? 0.9 :
-      path.startsWith('/brand/samsung') ? 0.9 :
-      path.startsWith('/brand/google') ? 0.9 :
-      path.startsWith('/brand/') ? 0.8 :
-      path.startsWith('/blog/') ? 0.7 :
-      priorityMap[path] || 0.5;
-
-    // Set different change frequencies based on content type
-    const changefreq = 
-      path === '/' ? 'daily' :
-      path.startsWith('/brand/') ? 'weekly' :
-      path.startsWith('/blog/') ? 'monthly' :
-      path.includes('privacy') || path.includes('terms') ? 'yearly' :
-      'weekly';
-
+    // Get the current date or page-specific last modified date
+    let pageLastMod = new Date(); // Default to current date
+    
+    // If you have specific logic to get the last modified date:
+    // pageLastMod = await getPageLastModifiedDate(path);
+    
+    // Ensure pageLastMod is a Date object before calling toISOString()
+    if (!(pageLastMod instanceof Date) || isNaN(pageLastMod.getTime())) {
+      pageLastMod = new Date(); // Fallback to current date
+    }
+    
     return {
       loc: path,
-      changefreq,
-      priority,
       lastmod: pageLastMod.toISOString(),
-      alternateRefs: [],
-      images: pageImages
+      changefreq: 'daily',
+      priority: path === '/' ? 1.0 : 0.8,
     };
-  },
-  additionalPaths: async (config) => {
-    const result = [];
-    
-    // Add additional dynamic paths here
-    const phones = [
-      { brand: 'apple', models: ['iphone-16', 'iphone-15', 'iphone-14', 'iphone-13', 'iphone-12'] },
-      { brand: 'samsung', models: ['galaxy-s25', 'galaxy-s24', 'galaxy-s23', 'galaxy-s22'] },
-      { brand: 'google', models: ['pixel-9', 'pixel-8', 'pixel-7', 'pixel-6'] }
-    ];
-
-    phones.forEach(({ brand, models }) => {
-      models.forEach((model) => {
-        result.push({
-          loc: `/brand/${brand}/${model}`,
-          changefreq: 'weekly',
-          priority: 0.8,
-          lastmod: getLastModified(`/brand/${brand}/${model}`).toISOString()
-        });
-      });
-    });
-
-    return result;
   },
   robotsTxtOptions: {
     policies: [
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/private', '/admin', '/dashboard']
-      }
+      },
     ],
-    additionalSitemaps: [
-      'https://selloldphone.com/server-sitemap.xml',
-    ]
   },
-  sitemapSize: 5000,
-}
+};
+
+// Alternative approach if you're getting lastmod from external source:
+// module.exports = {
+//   siteUrl: 'https://your-domain.com',
+//   generateRobotsTxt: true,
+//   transform: async (config, path) => {
+//     let lastmod = new Date().toISOString(); // Default
+    
+//     try {
+//       // If pageLastMod comes from database/API
+//       const pageLastMod = await getPageLastModifiedDate(path);
+      
+//       if (pageLastMod) {
+//         // Convert string to Date if needed
+//         const date = new Date(pageLastMod);
+//         if (!isNaN(date.getTime())) {
+//           lastmod = date.toISOString();
+//         }
+//       }
+//     } catch (error) {
+//       console.warn(`Could not get lastmod for ${path}:`, error);
+//     }
+    
+//     return {
+//       loc: path,
+//       lastmod,
+//       changefreq: 'daily',
+//       priority: path === '/' ? 1.0 : 0.8,
+//     };
+//   },
+// };

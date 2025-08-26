@@ -188,13 +188,13 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
 
 @keyframes scroll-horizontal-reverse {
   0% {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
   100% {
     transform: translateX(0);
@@ -202,11 +202,11 @@
 }
 
 .animate-scroll-horizontal {
-  animation: scroll-horizontal 14s linear infinite;
+  animation: scroll-horizontal 20s linear infinite;
 }
 
 .animate-scroll-horizontal-reverse {
-  animation: scroll-horizontal-reverse 30s linear infinite;
+  animation: scroll-horizontal-reverse 25s linear infinite;
 }
 
 .animate-scroll-horizontal:hover,
@@ -224,4 +224,20 @@
   transform: translateY(-2px);
   box-shadow: 0 0 3em rgba(0, 0, 0, 0.15), 0 0 0.3em rgba(0, 0, 0, 0.1), 0 0 0.3em rgba(0, 0, 0, 0.1), 0 0 0.3em
     rgba(0, 0, 0, 0.1);
+}
+
+/* Hero decorative animation */
+@keyframes floatUpDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.hero-radial-bg {
+  background: radial-gradient(60% 60% at 10% 0%, rgba(34,197,94,0.10), transparent 60%),
+              radial-gradient(40% 40% at 90% 10%, rgba(59,130,246,0.10), transparent 60%);
+}
+
+.floating-shape {
+  animation: floatUpDown 6s ease-in-out infinite;
+  will-change: transform;
 }

@@ -6,6 +6,7 @@ import { TypewriterText } from "@/components/ui/typewriter-text"
 import { ArrowRight, CheckCircle, Star, ShieldCheck, Clock, Smartphone, DollarSign, Zap } from "lucide-react"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
+import FAQAccordion from "@/components/faq-accordion"
 
 export default function HomePage() {
   const router = useRouter()
@@ -104,7 +105,7 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
   { name: "Sell Used iPhone 15", href: "/phone/used-iphone-15" },
   { name: "Sell Used iPhone 14", href: "/phone/used-iphone-14" },
   { name: "Sell Used iPhone 13", href: "/phone/used-iphone-13" },
-  { name: "Sell Used iPhone 12 pro", href: "/phone/used-iphone-12-pro" },
+  { name: "Iphone 15 vs iphone 16", href: "/blog/iphone-15-vs-iphone-16-comparison" },
 ],
 "Top Samsung Models": [
   { name: "Sell Used Galaxy S25", href: "/phone/used-galaxy-s25" },
@@ -116,7 +117,7 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
   { name: "Sell Used Pixel 9", href: "/phone/used-pixel-9" },
   { name: "Sell Used Pixel 8", href: "/phone/used-pixel-8" },
   { name: "Sell Used Pixel 7", href: "/phone/used-pixel-7" },
-  { name: "Sell Used Pixel 6", href: "/phone/used-pixel-6" },
+  { name: "Sell Old Phone Online India:", href: "/blog/sell-old-phone-online-india" },
 ],
   
   
@@ -194,8 +195,11 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
       <Navigation />
 
       {/* Hero Section */}
-      <section className="w-full  py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-12">
+      <section className="w-full  py-20 lg:py-32 relative overflow-hidden hero-radial-bg">
+        {/* Decorative floating shapes */}
+        {/* Third semi-circle positioned where user marked */}
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
           {/* Left: Headline and Actions */}
           <div className="flex-1 text-left space-y-8">
             <h1 className="text-5xl md:text-6xl font-bold leading-tight text-gray-900">
@@ -311,7 +315,7 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
           <div className="space-y-6">
             {/* First row */}
             <div className="flex animate-scroll-horizontal space-x-6">
-              {[...customerReviews.slice(0, 5), ...customerReviews.slice(0, 5)].map((review, index) => (
+              {customerReviews.slice(0, 5).map((review, index) => (
                 <div key={`row1-${index}`} className="flex-shrink-0 w-80 bg-white rounded-xl p-6 review-card shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center font-semibold text-green-600">
@@ -335,7 +339,7 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
 
             {/* Second row */}
             <div className="flex animate-scroll-horizontal-reverse space-x-6">
-              {[...customerReviews.slice(5, 10), ...customerReviews.slice(5, 10)].map((review, index) => (
+              {customerReviews.slice(5, 10).map((review, index) => (
                 <div key={`row2-${index}`} className="flex-shrink-0 w-80 bg-white rounded-xl p-6 review-card shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center font-semibold text-green-600">
@@ -631,6 +635,83 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
     </div>
   </div>
 </div>
+
+      {/* Blog Content Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Sell Old Phone Online & Buy Refurbished Mobiles Contreat</h3>
+          
+          <div className="prose prose-lg max-w-none text-gray-700 space-y-6">
+            <p>
+              Looking to sell your old mobile phone or upgrade to a new one without overspending? Contreat is India's most reliable platform to sell old phones online and buy refurbished smartphones at the best prices. With instant quotes, free doorstep pickup, and quick cash payments, we make selling and buying mobiles simple, fast, and trustworthy.
+            </p>
+            
+            <h4 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Sell Your Old Phone in Minutes</h4>
+            <p>
+              Turn your unused phone into instant cash with Contreat. Get an instant quote by entering your phone details and receive the best resale value in seconds. Schedule free doorstep pickup at a time that works for you, and we'll collect your phone from your location. Receive instant cash payment at the time of pickup without any delays.
+            </p>
+            <p>
+              Whether it's an iPhone, Samsung, OnePlus, or any other brand, Contreat ensures you always get the highest value for your old phone. Our transparent pricing system guarantees fair market rates for all smartphone brands and models.
+            </p>
+            
+            <h4 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Buy Old & Refurbished Phones at Affordable Prices</h4>
+            <p>
+              Upgrade smartly with Contreat's wide selection of refurbished smartphones that look and perform like new. Every device goes through strict quality checks to guarantee performance and reliability. Our refurbished phones come with comprehensive quality assurance including 32-point quality inspection, 6-month warranty, and 15-day replacement policy.
+            </p>
+            <p>
+              Choose from trusted brands like Apple, Samsung, OnePlus, Xiaomi, Realme, and more at nearly half the cost of new devices. All refurbished smartphones are thoroughly tested for battery life, screen quality, camera functionality, and overall performance before being listed for sale.
+            </p>
+            
+            <h4 className="text-xl font-semibold text-gray-900 mt-8 mb-4">How Contreat Works</h4>
+            
+            <h5 className="text-lg font-semibold text-gray-800 mt-6 mb-3">To Sell a Phone</h5>
+            <p>
+              Visit our website or download the Contreat app to get started. Enter your device details including brand, model, storage capacity, and condition to get an instant quote. Schedule a free pickup from your home at your preferred time slot. Our pickup executive will visit your location and complete the transaction. Receive cash instantly when we collect your phone after final verification.
+            </p>
+            
+            <h5 className="text-lg font-semibold text-gray-800 mt-6 mb-3">To Buy a Phone</h5>
+            <p>
+              Browse our extensive refurbished phone section with detailed listings and high-quality images. Select your preferred brand, model, storage variant, and condition rating (Fair, Good, or Superb). Complete secure online payment through multiple payment options including UPI, card, or net banking. Get your refurbished phone delivered to your doorstep with secure packaging and tracking details.
+            </p>
+            
+            <h4 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Why Choose Contreat</h4>
+            <p>
+              Contreat offers the best resale price for old phones in the market with competitive valuations. Our hassle-free selling process eliminates the need for negotiations or multiple buyer meetings. Free home pickup service available across major Indian cities with flexible timing options. Instant cash payment ensures you get money immediately without waiting periods.
+            </p>
+            <p>
+              We guarantee 100% secure data wipe from old devices to protect your personal information. All refurbished phones come with warranty and replacement policies for customer satisfaction. Our customer support team assists throughout the buying and selling process.
+            </p>
+            
+            <h4 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Sell or Buy Popular Phone Brands</h4>
+            <p>
+              <strong>Sell Popular Brands:</strong> Sell iPhone models including iPhone 13, iPhone 14, and iPhone 15. Sell Samsung Galaxy series including S23, S24, and Note series. Sell OnePlus smartphones, Xiaomi phones, and Oppo devices for instant cash.
+            </p>
+            <p>
+              <strong>Buy Refurbished Phones:</strong> Buy iPhone at discounted prices with warranty coverage. Buy Samsung refurbished phones with quality guarantee. Buy Realme, Vivo, and Motorola smartphones at affordable rates with complete functionality checks.
+            </p>
+            <p>
+              With Contreat, selling and buying mobiles is always safe, fast, and reliable. Our platform connects phone sellers with buyers across India, ensuring fair pricing and secure transactions.
+            </p>
+            
+            <h4 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Ready to Upgrade Your Phone</h4>
+            <p>
+              Sell your old phone online today and get instant cash for your unused device. Buy a certified refurbished smartphone with Contreat and save money while getting quality assurance. Contreat is India's trusted platform for old mobiles with thousands of satisfied customers nationwide.
+            </p>
+            <p>
+              Contact Contreat customer support for any queries about phone selling prices, refurbished phone availability, or technical assistance. Join thousands of Indians who trust Contreat for their mobile phone buying and selling needs.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h3 className="text-3xl font-bold text-gray-900 mb-12 text-center">Contreat Frequently Asked Questions</h3>
+          
+          <FAQAccordion />
+        </div>
+      </section>
 
       {/* Sell Your Phone Section */}
       <section className="py-20 bg-gradient-to-br from-green-600 to-green-800 text-white">
