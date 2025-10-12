@@ -70,3 +70,5 @@ export async function POST(request: NextRequest) {
     )
   }
 }
+
+{/* Full HTML email template with inline styles for better compatibility */}
