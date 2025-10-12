@@ -142,8 +142,27 @@ export default function RootLayout({
             }),
           }}
         />
+        
+        {/* AdSense script - replace with your actual ad client ID */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+          id="adsense-script"
+        />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        
+        {/* Example AdSense ad placement - replace with your actual ad slot ID */}
+        <ins
+          className="adsbygoogle"
+          style={{ display: "block" }}
+          data-ad-client="ca-pub-1234567890"
+          data-ad-slot="1234567890"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        />
+      </body>
     </html>
   )
 }
