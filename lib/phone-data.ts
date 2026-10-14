@@ -27,6 +27,174 @@ export interface PhoneModel {
 export const phoneData: PhoneModel[] = [
   // Apple iPhones
   {
+    id: "used-iphone-18-pro-max",
+
+    name: "iPhone 18 Pro Max",
+
+    brand: "Apple",
+
+    image: "https://cashsecond.s3.ap-south-1.amazonaws.com/upload/product_img/iPhone%2018.jpeg",
+
+    basePrice: 177000,
+
+    specs: {
+      ram: ["12GB"],
+
+      storage: ["256GB", "512GB", "1TB", "2TB"],
+
+      camera: "48MP Triple Camera",
+
+      battery: "All-day battery",
+
+      display: '6.9" Super Retina XDR',
+    },
+  },
+
+  {
+    id: "used-iphone-18-pro",
+
+    name: "iPhone 18 Pro",
+
+    brand: "Apple",
+
+    image: "https://cashsecond.s3.ap-south-1.amazonaws.com/upload/product_img/iPhone%2018.jpeg",
+
+    basePrice: 162000,
+
+    specs: {
+      ram: ["12GB"],
+
+      storage: ["256GB", "512GB", "1TB", "2TB"],
+
+      camera: "48MP Triple Camera",
+
+      battery: "All-day battery",
+
+      display: '6.3" Super Retina XDR',
+    },
+  },
+
+  {
+    id: "used-iphone-17-pro-max",
+
+    name: "iPhone 17 Pro Max",
+
+    brand: "Apple",
+
+    image: "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-pro-max-1.jpg",
+
+    basePrice: 135000,
+
+    specs: {
+      ram: ["12GB"],
+
+      storage: ["256GB", "512GB", "1TB", "2TB"],
+
+      camera: "48MP Triple Camera",
+
+      battery: "4832mAh",
+
+      display: '6.9" Super Retina XDR',
+    },
+  },
+
+  {
+    id: "used-iphone-17-pro",
+
+    name: "iPhone 17 Pro",
+
+    brand: "Apple",
+
+    image: "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-pro-1.jpg",
+
+    basePrice: 117000,
+
+    specs: {
+      ram: ["12GB"],
+
+      storage: ["256GB", "512GB", "1TB"],
+
+      camera: "48MP Triple Camera",
+
+      battery: "3988mAh",
+
+      display: '6.3" Super Retina XDR',
+    },
+  },
+
+  {
+    id: "used-iphone-air",
+
+    name: "iPhone Air",
+
+    brand: "Apple",
+
+    image: "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-air-1.jpg",
+
+    basePrice: 86000,
+
+    specs: {
+      ram: ["12GB"],
+
+      storage: ["256GB", "512GB", "1TB"],
+
+      camera: "48MP Single Camera",
+
+      battery: "3149mAh",
+
+      display: '6.5" Super Retina XDR',
+    },
+  },
+
+  {
+    id: "used-iphone-17",
+
+    name: "iPhone 17",
+
+    brand: "Apple",
+
+    image: "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-1.jpg",
+
+    basePrice: 72000,
+
+    specs: {
+      ram: ["8GB"],
+
+      storage: ["256GB", "512GB"],
+
+      camera: "48MP Dual Camera",
+
+      battery: "3692mAh",
+
+      display: '6.3" Super Retina XDR',
+    },
+  },
+
+  {
+    id: "used-iphone-17e",
+
+    name: "iPhone 17e",
+
+    brand: "Apple",
+
+    image: "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17e-1.jpg",
+
+    basePrice: 45500,
+
+    specs: {
+      ram: ["8GB"],
+
+      storage: ["256GB", "512GB"],
+
+      camera: "48MP Single Camera",
+
+      battery: "4005mAh",
+
+      display: '6.1" Super Retina XDR',
+    },
+  },
+
+  {
     id: "used-iphone-16-pro-max",
 
     name: "iPhone 16 Pro Max",
@@ -779,6 +947,102 @@ export const phoneData: PhoneModel[] = [
   // Samsung Galaxy S Series
 
   {
+    id: "used-galaxy-s25-ultra",
+
+    name: "Galaxy S25 Ultra",
+
+    brand: "Samsung",
+
+    image: "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s25-ultra-sm-s938-1.jpg",
+
+    basePrice: 80000,
+
+    specs: {
+      ram: ["12GB"],
+
+      storage: ["256GB", "512GB", "1TB"],
+
+      camera: "200MP Quad Camera",
+
+      battery: "5000mAh",
+
+      display: '6.9" Dynamic AMOLED 2X',
+    },
+  },
+
+  {
+    id: "used-galaxy-s25-edge",
+
+    name: "Galaxy S25 Edge",
+
+    brand: "Samsung",
+
+    image: "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s25-edge.jpg",
+
+    basePrice: 63500,
+
+    specs: {
+      ram: ["12GB"],
+
+      storage: ["256GB", "512GB"],
+
+      camera: "200MP Dual Camera",
+
+      battery: "3900mAh",
+
+      display: '6.7" Dynamic AMOLED 2X',
+    },
+  },
+
+  {
+    id: "used-galaxy-s25-plus",
+
+    name: "Galaxy S25+",
+
+    brand: "Samsung",
+
+    image: "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s25-plus-sm-s936-1.jpg",
+
+    basePrice: 60000,
+
+    specs: {
+      ram: ["12GB"],
+
+      storage: ["256GB", "512GB"],
+
+      camera: "50MP Triple Camera",
+
+      battery: "4900mAh",
+
+      display: '6.7" Dynamic AMOLED 2X',
+    },
+  },
+
+  {
+    id: "used-galaxy-s25",
+
+    name: "Galaxy S25",
+
+    brand: "Samsung",
+
+    image: "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s25-sm-s931-1.jpg",
+
+    basePrice: 46000,
+
+    specs: {
+      ram: ["12GB"],
+
+      storage: ["256GB", "512GB"],
+
+      camera: "50MP Triple Camera",
+
+      battery: "4000mAh",
+
+      display: '6.2" Dynamic AMOLED 2X',
+    },
+  },
+
+  {
     id: "used-galaxy-s24-ultra",
 
     name: "Galaxy S24 Ultra",
@@ -950,6 +1214,126 @@ export const phoneData: PhoneModel[] = [
   // Google Pixel
 
   {
+    id: "used-galaxy-s22",
+
+    name: "Galaxy S22",
+
+    brand: "Samsung",
+
+    image: "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s22-5g-1.jpg",
+
+    basePrice: 23700,
+
+    specs: {
+      ram: ["8GB"],
+
+      storage: ["128GB", "256GB"],
+
+      camera: "50MP Triple Camera",
+
+      battery: "3700mAh",
+
+      display: '6.1" Dynamic AMOLED 2X',
+    },
+  },
+
+  {
+    id: "used-pixel-10-pro-xl",
+
+    name: "Pixel 10 Pro XL",
+
+    brand: "Google",
+
+    image: "https://fdn2.gsmarena.com/vv/bigpic/google-pixel-10-pro-xl-.jpg",
+
+    basePrice: 72000,
+
+    specs: {
+      ram: ["16GB"],
+
+      storage: ["256GB"],
+
+      camera: "50MP Triple Camera",
+
+      battery: "5200mAh",
+
+      display: '6.8" Super Actua LTPO OLED',
+    },
+  },
+
+  {
+    id: "used-pixel-10-pro",
+
+    name: "Pixel 10 Pro",
+
+    brand: "Google",
+
+    image: "https://fdn2.gsmarena.com/vv/bigpic/google-pixel-10-pro-.jpg",
+
+    basePrice: 66000,
+
+    specs: {
+      ram: ["16GB"],
+
+      storage: ["256GB"],
+
+      camera: "50MP Triple Camera",
+
+      battery: "4870mAh",
+
+      display: '6.3" Super Actua LTPO OLED',
+    },
+  },
+
+  {
+    id: "used-pixel-10",
+
+    name: "Pixel 10",
+
+    brand: "Google",
+
+    image: "https://fdn2.gsmarena.com/vv/bigpic/google-pixel-10-.jpg",
+
+    basePrice: 47100,
+
+    specs: {
+      ram: ["12GB"],
+
+      storage: ["256GB"],
+
+      camera: "48MP Triple Camera",
+
+      battery: "4970mAh",
+
+      display: '6.3" Actua OLED',
+    },
+  },
+
+  {
+    id: "used-pixel-10a",
+
+    name: "Pixel 10a",
+
+    brand: "Google",
+
+    image: "https://fdn2.gsmarena.com/vv/pics/google/google-pixel-10a-1.jpg",
+
+    basePrice: 34000,
+
+    specs: {
+      ram: ["8GB"],
+
+      storage: ["256GB"],
+
+      camera: "48MP Dual Camera",
+
+      battery: "5100mAh",
+
+      display: '6.3" pOLED',
+    },
+  },
+
+  {
     id: "used-pixel-9-pro",
 
     name: "Pixel 9 Pro",
@@ -1042,6 +1426,125 @@ export const phoneData: PhoneModel[] = [
       battery: "5003mAh",
 
       display: '6.7" LTPO OLED',
+    },
+  },
+  {
+    id: "used-pixel-8-pro",
+
+    name: "Pixel 8 Pro",
+
+    brand: "Google",
+
+    image: "https://fdn2.gsmarena.com/vv/pics/google/google-pixel-8-pro-1.jpg",
+
+    basePrice: 37900,
+
+    specs: {
+      ram: ["12GB"],
+
+      storage: ["128GB", "256GB", "512GB"],
+
+      camera: "50MP Triple Camera",
+
+      battery: "5050mAh",
+
+      display: '6.7" Super Actua LTPO OLED',
+    },
+  },
+
+  {
+    id: "used-pixel-8",
+
+    name: "Pixel 8",
+
+    brand: "Google",
+
+    image: "https://fdn2.gsmarena.com/vv/pics/google/google-pixel-8-1.jpg",
+
+    basePrice: 25500,
+
+    specs: {
+      ram: ["8GB"],
+
+      storage: ["128GB", "256GB"],
+
+      camera: "50MP Dual Camera",
+
+      battery: "4575mAh",
+
+      display: '6.2" Actua OLED',
+    },
+  },
+
+  {
+    id: "used-pixel-8a",
+
+    name: "Pixel 8a",
+
+    brand: "Google",
+
+    image: "https://fdn2.gsmarena.com/vv/pics/google/google-pixel-8a-1.jpg",
+
+    basePrice: 24800,
+
+    specs: {
+      ram: ["8GB"],
+
+      storage: ["128GB", "256GB"],
+
+      camera: "64MP Dual Camera",
+
+      battery: "4492mAh",
+
+      display: '6.1" Actua OLED',
+    },
+  },
+
+  {
+    id: "used-pixel-7-pro",
+
+    name: "Pixel 7 Pro",
+
+    brand: "Google",
+
+    image: "https://fdn2.gsmarena.com/vv/bigpic/google-pixel7-pro-new.jpg",
+
+    basePrice: 26500,
+
+    specs: {
+      ram: ["12GB"],
+
+      storage: ["256GB"],
+
+      camera: "50MP Triple Camera",
+
+      battery: "5000mAh",
+
+      display: '6.7" LTPO AMOLED',
+    },
+  },
+
+  {
+    id: "used-pixel-7",
+
+    name: "Pixel 7",
+
+    brand: "Google",
+
+    image: "https://fdn2.gsmarena.com/vv/bigpic/google-pixel7-new.jpg",
+
+    basePrice: 20500,
+
+    specs: {
+      ram: ["8GB"],
+
+      storage: ["128GB"],
+
+      camera: "50MP Dual Camera",
+
+      battery: "4355mAh",
+
+      display: '6.3" AMOLED',
     },
   },
 ]

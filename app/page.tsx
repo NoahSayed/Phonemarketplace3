@@ -101,6 +101,7 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
 
   ],
 "Top iPhone Models": [
+  { name: "Sell Used iPhone 17", href: "/phone/used-iphone-17" },
   { name: "Sell Used iPhone 16", href: "/phone/used-iphone-16" },
   { name: "Sell Used iPhone 15", href: "/phone/used-iphone-15" },
   { name: "Sell Used iPhone 14", href: "/phone/used-iphone-14" },
@@ -114,6 +115,7 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
   { name: "Sell Used Galaxy S22", href: "/phone/used-galaxy-s22" },
 ],
 "Top Google Pixel Models": [
+  { name: "Sell Used Pixel 10", href: "/phone/used-pixel-10" },
   { name: "Sell Used Pixel 9", href: "/phone/used-pixel-9" },
   { name: "Sell Used Pixel 8", href: "/phone/used-pixel-8" },
   { name: "Sell Used Pixel 7", href: "/phone/used-pixel-7" },

@@ -45,6 +45,7 @@ export async function POST(request: NextRequest) {
             <p><b>Device Name:</b> ${body.deviceName || body.phoneModel}</p>
             <p><b>Brand:</b> ${body.brand || body.phoneBrand}</p>
             <p><b>Base Price:</b> ₹${body.basePrice || "Not specified"}</p>
+            ${body.quotedPrice !== undefined ? `<p><b>Quoted Price:</b> ₹${body.quotedPrice}</p>` : ""}
           </div>
           
           <div style="background: #f0f9ff; padding: 15px; border-radius: 8px; margin: 15px 0;">

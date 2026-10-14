@@ -12,6 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { getPhoneById } from "@/lib/phone-data"
+import { deductionGroups, quotePrice, totalDeductionPercent, describeCondition } from "@/lib/price-formula"
 import { useToast } from "@/hooks/use-toast"
 
 import { OtherPhonesForm } from "@/components/ui/other-phones-form"
@@ -32,6 +33,7 @@ export default function PhoneDetailPage() {
     originalBill: false,
     originalCharger: false,
   })
+  const [selectedDeductions, setSelectedDeductions] = useState<string[]>([])
   const [pincodeError, setPincodeError] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
@@ -74,6 +76,26 @@ export default function PhoneDetailPage() {
       ram: value,
     })
   }
+
+  const toggleDeduction = (groupId: string, optionId: string) => {
+    const group = deductionGroups.find((g) => g.id === groupId)
+    setSelectedDeductions((prev) => {
+      if (prev.includes(optionId)) return prev.filter((id) => id !== optionId)
+      if (group?.single) {
+        const groupIds = group.options.map((o) => o.id)
+        return [...prev.filter((id) => !groupIds.includes(id)), optionId]
+      }
+      return [...prev, optionId]
+    })
+  }
+
+  const quoteInput = {
+    selected: selectedDeductions,
+    hasBox: formData.originalBox,
+    hasCharger: formData.originalCharger,
+  }
+  const quotedPrice = quotePrice(phone.basePrice, quoteInput)
+  const deductionPercent = totalDeductionPercent(quoteInput)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -123,6 +145,8 @@ export default function PhoneDetailPage() {
           deviceId: phone.id,
           brand: phone.brand,
           basePrice: phone.basePrice,
+          quotedPrice,
+          condition: describeCondition(quoteInput),
           formType: "phone-detail",
         }),
       })
@@ -144,6 +168,7 @@ export default function PhoneDetailPage() {
           originalBill: false,
           originalCharger: false,
         })
+        setSelectedDeductions([])
 
         toast({
           title: "Message sent successfully!",
@@ -207,6 +232,7 @@ export default function PhoneDetailPage() {
                 </div>
               </div>
 
+              <p className="text-sm font-medium text-gray-500">Get up to</p>
               <p className="text-4xl font-bold text-green-600 mb-4">₹{phone.basePrice.toLocaleString()}</p>
 
               <div className="flex items-center space-x-2 text-green-600">
@@ -401,6 +427,32 @@ export default function PhoneDetailPage() {
                     </div>
                   </div>
 
+                  {deductionGroups.map((group) => (
+                    <div key={group.id} className="bg-gray-50 p-6 rounded-xl">
+                      <h3 className="text-lg font-semibold text-gray-900">{group.title}</h3>
+                      <p className="text-sm text-gray-500 mb-4">{group.hint}</p>
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                        {group.options.map((option) => {
+                          const active = selectedDeductions.includes(option.id)
+                          return (
+                            <button
+                              key={option.id}
+                              type="button"
+                              onClick={() => toggleDeduction(group.id, option.id)}
+                              className={`p-3 text-left text-sm font-medium rounded-lg border-2 transition-colors ${
+                                active
+                                  ? "border-green-600 bg-green-50 text-green-800"
+                                  : "border-gray-200 bg-white text-gray-900 hover:border-green-500"
+                              }`}
+                            >
+                              {option.label}
+                            </button>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  ))}
+
                   <div className="bg-gray-50 p-6 rounded-xl">
                     <h3 className="text-lg font-semibold text-gray-900 mb-4">Original Accessories</h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -446,6 +498,16 @@ export default function PhoneDetailPage() {
                         </div>
                       </label>
                     </div>
+                  </div>
+
+                  <div className="p-6 rounded-xl bg-green-50 border-2 border-green-200 text-center">
+                    <p className="text-sm font-medium text-green-800">Your phone's price</p>
+                    <p className="text-4xl font-bold text-green-600">₹{quotedPrice.toLocaleString("en-IN")}</p>
+                    <p className="text-xs text-gray-500 mt-1">
+                      {deductionPercent > 0
+                        ? `₹${phone.basePrice.toLocaleString("en-IN")} less ${deductionPercent}% for condition and accessories`
+                        : "Best price: perfect condition with box and charger"}
+                    </p>
                   </div>
 
                   <Button
