@@ -4,6 +4,7 @@ import Link from "next/link"
 import { Calendar, User, ArrowLeft, Share2 } from "lucide-react"
 import { notFound } from "next/navigation"
 import { pageMeta } from "@/lib/seo"
+import { blogPosts } from "@/lib/blog-posts"
 
 const blogContent = {
   "iphone-16-pro-vs-samsung-s25-ultra": {
@@ -60,10 +61,17 @@ interface BlogPostPageProps {
   }
 }
 
+// Pre-render every post (fast, and listed in the sitemap); other slugs 404.
+export const dynamicParams = false
+export function generateStaticParams() {
+  return Object.keys(blogContent).map((slug) => ({ slug }))
+}
+
 export function generateMetadata({ params }: BlogPostPageProps) {
   const post = blogContent[params.slug as keyof typeof blogContent]
   if (!post) return {}
-  return pageMeta(`/blog/${params.slug}`, post.title, post.title)
+  const excerpt = blogPosts.find((p) => p.id === params.slug)?.excerpt
+  return pageMeta(`/blog/${params.slug}`, post.title, excerpt || post.title)
 }
 
 export default function BlogPostPage({ params }: BlogPostPageProps) {

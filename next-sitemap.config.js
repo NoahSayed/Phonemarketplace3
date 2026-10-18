@@ -18,25 +18,14 @@ module.exports = {
     Promise.all(dynamicPaths().map((p) => config.transform(config, p))),
   siteUrl: 'https://www.contreat.in',
   generateRobotsTxt: true,
-  transform: async (config, path) => {
-    // Get the current date or page-specific last modified date
-    let pageLastMod = new Date(); // Default to current date
-    
-    // If you have specific logic to get the last modified date:
-    // pageLastMod = await getPageLastModifiedDate(path);
-    
-    // Ensure pageLastMod is a Date object before calling toISOString()
-    if (!(pageLastMod instanceof Date) || isNaN(pageLastMod.getTime())) {
-      pageLastMod = new Date(); // Fallback to current date
-    }
-    
-    return {
-      loc: path,
-      lastmod: pageLastMod.toISOString(),
-      changefreq: 'daily',
-      priority: path === '/' ? 1.0 : 0.8,
-    };
-  },
+  // No lastmod: a build-time "now" on every page tells Google nothing and makes
+  // it ignore the field. Blog posts keep their real publish dates in Article data.
+  autoLastmod: false,
+  transform: async (config, path) => ({
+    loc: path,
+    changefreq: path === '/' ? 'daily' : 'weekly',
+    priority: path === '/' ? 1.0 : path.startsWith('/brand/') ? 0.9 : 0.8,
+  }),
   robotsTxtOptions: {
     policies: [
       {
