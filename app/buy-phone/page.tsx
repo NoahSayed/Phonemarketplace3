@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image"
 import { useState } from "react"
 import type React from "react"
 
@@ -85,9 +86,14 @@ export default function BuyPhone() {
           {/* Phone Info */}
           <div className="space-y-8">
             <div className="aspect-square bg-white rounded-2xl shadow-lg flex items-center justify-center overflow-hidden">
-              <img
+              <Image
                 src={phone.image || "/placeholder.svg"}
                 alt={phone.name}
+                width={512}
+                height={512}
+                sizes="(max-width: 768px) 90vw, 448px"
+                priority
+                unoptimized={!phone.image}
                 className="w-full h-full object-contain p-8"
               />
             </div>

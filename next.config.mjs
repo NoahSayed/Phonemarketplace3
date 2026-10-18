@@ -19,7 +19,6 @@ const nextConfig = {
       'fonezone.me',
       'cashsecond.s3.ap-south-1.amazonaws.com',
       'www.neolight.in',
-      'mobitez.in',
       'i.gadgets360cdn.com',
       'cdsassets.apple.com',
     ].map((hostname) => ({ protocol: 'https', hostname })),

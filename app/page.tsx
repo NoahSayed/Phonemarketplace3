@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { TypewriterText } from "@/components/ui/typewriter-text"
 import { ArrowRight, CheckCircle, Star, ShieldCheck, Clock, Smartphone, DollarSign, Zap } from "lucide-react"
@@ -543,13 +544,12 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
             {/* Phone Image  */}
             <div className="relative">
               <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden">
-                <img
+                <Image
                   src="https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-1.jpg"
                   alt="second hand iPhone 15 for sale"
                   width={570}
                   height={650}
-                  loading="lazy"
-                  decoding="async"
+                  sizes="(max-width: 1024px) 90vw, 570px"
                   className="w-full h-full object-contain p-8"
                 />
               </div>

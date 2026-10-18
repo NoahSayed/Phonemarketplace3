@@ -661,7 +661,7 @@ export const phoneData: PhoneModel[] = [
 
     brand: "Apple",
 
-    image: "https://mobitez.in/wp-content/uploads/2024/04/Apple-iPhone-11-Purple-ps1.webp",
+    image: "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-11-1.jpg",
 
     basePrice: 35000,
 
@@ -854,7 +854,7 @@ export const phoneData: PhoneModel[] = [
 
     brand: "Apple",
 
-    image: "https://fonezone.me/cdn/shop/products/6sprg_2a1e1dbf-5fb2-46c8-b04b-17f59e6887b1.jpg?v=1746850846",
+    image: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-6s-plus.jpg",
 
     basePrice: 9000,
 
