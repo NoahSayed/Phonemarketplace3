@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Mail, Phone, MapPin, Clock } from "lucide-react"
+import { Mail, MapPin, Clock } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 
 export default function ContactPage() {
@@ -83,12 +83,6 @@ export default function ContactPage() {
       subtitle: "Send us an email anytime",
     },
     {
-      icon: <Phone className="h-6 w-6" />,
-      title: "Phone",
-      details: "+91",
-      subtitle: "Mon-Sat 9AM to 6PM",
-    },
-    {
       icon: <MapPin className="h-6 w-6" />,
       title: "Office",
       details: "Mumbai, Maharashtra",
@@ -119,7 +113,7 @@ export default function ContactPage() {
       {/* Contact Info */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {contactInfo.map((info, index) => (
               <div key={index} className="bg-white rounded-xl p-6 shadow-sm text-center">
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-full text-green-700 mb-4">

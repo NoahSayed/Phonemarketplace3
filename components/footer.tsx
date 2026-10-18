@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Smartphone, Mail, Phone, MapPin } from "lucide-react"
+import { Smartphone, Mail, MapPin } from "lucide-react"
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -79,12 +79,6 @@ const Footer = () => {
                 <Mail className="h-4 w-4 text-green-700" />
                 <a href="mailto:itsselloldphone@gmail.com" className="text-gray-400 hover:text-white transition-colors">
                   admin@contreat.in
-                </a>
-              </li>
-              <li className="flex items-center space-x-2">
-                <Phone className="h-4 w-4 text-green-700" />
-                <a href="tel:+91" className="text-gray-400 hover:text-white transition-colors">
-                  +91 
                 </a>
               </li>
               <li className="flex items-center space-x-2">
