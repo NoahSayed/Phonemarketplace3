@@ -118,7 +118,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 </div>
                 <div className="flex items-center">
                   <Calendar className="h-4 w-4 mr-2" />
-                  {new Date(post.date).toLocaleDateString()}
+                  {new Date(post.date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}
                 </div>
                 <span>{post.readTime}</span>
               </div>

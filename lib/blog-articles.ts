@@ -25,7 +25,7 @@ function resaleArticle(brand: "Apple" | "Samsung" | "Google", label: string, bra
   const top = phones[0]
   const oldest = phones[phones.length - 1]
   return `
-    <p>This guide lists the price Contreat pays today for every ${label} we buy, from the ${oldest.name} to the ${top.name}.
+    <p>This guide lists the price Contreat pays today for all the ${label} we buy, from the ${oldest.name} to the ${top.name}.
     The first column is the top price for a phone that is less than 3 months old, has its box and charger and has no damage.
     The second column is what most people get: a phone older than 11 months in good condition, with box and charger.</p>
 

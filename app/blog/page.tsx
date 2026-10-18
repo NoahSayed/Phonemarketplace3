@@ -126,7 +126,7 @@ export default function BlogPage() {
                       </div>
                       <div className="flex items-center">
                         <Calendar className="h-4 w-4 mr-1" />
-                        {new Date(post.date).toLocaleDateString()}
+                        {new Date(post.date).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
                       </div>
                     </div>
                   </div>
