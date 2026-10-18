@@ -11,15 +11,12 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Navigation from "@/components/navigation"
-import Footer from "@/components/footer"
 import { getPhoneById } from "@/lib/phone-data"
 import { deductionGroups, quotePrice, totalDeductionPercent, describeCondition } from "@/lib/price-formula"
 import { useToast } from "@/hooks/use-toast"
 import { trackLead, trackFormError } from "@/lib/analytics"
 import { postLead } from "@/lib/submit-lead"
 
-import { RelatedPhones } from "@/components/related-phones"
-import { PhoneFaqSection } from "@/components/phone-faq-section"
 
 export default function PhoneDetailPage() {
   const params = useParams()
@@ -547,9 +544,6 @@ export default function PhoneDetailPage() {
         </div>
       </div>
 
-      <PhoneFaqSection phone={phone} />
-      <RelatedPhones phone={phone} />
-      <Footer />
     </div>
   )
 }

@@ -3,6 +3,9 @@ import { notFound } from "next/navigation"
 import { getPhoneById, phoneData } from "@/lib/phone-data"
 import { breadcrumbJsonLd, pageMeta } from "@/lib/seo"
 import { phoneFaqJsonLd } from "@/lib/phone-faq"
+import Footer from "@/components/footer"
+import { RelatedPhones } from "@/components/related-phones"
+import { PhoneFaqSection } from "@/components/phone-faq-section"
 
 // Build every phone page at deploy time (served from the CDN); other ids 404.
 export const dynamicParams = false
@@ -35,6 +38,10 @@ export default function PhoneLayout({ children, params }: { children: React.Reac
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {children}
+      {/* Static sections rendered on the server, so the page only hydrates the price form. */}
+      <PhoneFaqSection phone={phone} />
+      <RelatedPhones phone={phone} />
+      <Footer />
     </>
   )
 }
