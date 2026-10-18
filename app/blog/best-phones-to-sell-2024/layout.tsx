@@ -1,5 +1,6 @@
 import type React from "react"
 import { pageMeta } from "@/lib/seo"
+import { ArticleJsonLd } from "@/components/article-json-ld"
 
 export const metadata = pageMeta(
   "/blog/best-phones-to-sell-2024",
@@ -8,5 +9,10 @@ export const metadata = pageMeta(
 )
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return children
+  return (
+    <>
+      <ArticleJsonLd slug="best-phones-to-sell-2024" />
+      {children}
+    </>
+  )
 }

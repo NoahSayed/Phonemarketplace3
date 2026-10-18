@@ -37,3 +37,20 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
     })),
   }
 }
+
+// Article structured data for a blog post listed in lib/blog-posts.ts.
+export function articleJsonLd(post: { id: string; title: string; excerpt?: string; date: string }) {
+  const org = { "@type": "Organization", name: "Contreat", url: SITE }
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: org,
+    publisher: { ...org, logo: { "@type": "ImageObject", url: `${SITE}/android-chrome-512x512.png` } },
+    image: `${SITE}/opengraph-image`,
+    mainEntityOfPage: `${SITE}/blog/${post.id}`,
+  }
+}

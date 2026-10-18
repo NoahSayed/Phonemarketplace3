@@ -1,5 +1,6 @@
 import type React from "react"
 import { pageMeta } from "@/lib/seo"
+import { ArticleJsonLd } from "@/components/article-json-ld"
 
 export const metadata = pageMeta(
   "/blog/samsung-galaxy-z-fold-6-features",
@@ -8,5 +9,10 @@ export const metadata = pageMeta(
 )
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return children
+  return (
+    <>
+      <ArticleJsonLd slug="samsung-galaxy-z-fold-6-features" />
+      {children}
+    </>
+  )
 }
