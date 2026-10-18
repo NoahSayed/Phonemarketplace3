@@ -15,6 +15,7 @@ import { getPhoneById } from "@/lib/phone-data"
 import { deductionGroups, quotePrice, totalDeductionPercent, describeCondition } from "@/lib/price-formula"
 import { useToast } from "@/hooks/use-toast"
 import { trackLead, trackFormError } from "@/lib/analytics"
+import { postLead } from "@/lib/submit-lead"
 
 import { OtherPhonesForm } from "@/components/ui/other-phones-form"
 
@@ -135,7 +136,7 @@ export default function PhoneDetailPage() {
         basePrice: phone.basePrice,
       })
 
-      const response = await fetch("/api/contact", {
+      const response = await postLead("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

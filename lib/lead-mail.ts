@@ -6,7 +6,7 @@ const DEFAULT_RECIPIENT = "itsselloldphone@gmail.com"
 type Lead = Record<string, unknown>
 
 export type SendResult =
-  | { ok: true; via: "resend" | "formsubmit"; id?: string }
+  | { ok: true; via: "resend"; id?: string }
   | { ok: false; reasons: string[] }
 
 const esc = (v: unknown) =>
@@ -59,7 +59,7 @@ export function leadHtml(b: Lead) {
     </div>`
 }
 
-// Plain key/value copy of the lead, used by the backup channel.
+// Plain key/value copy of the lead, for logs.
 function leadFields(b: Lead) {
   const out: Record<string, string> = {}
   for (const [k, v] of Object.entries(b)) {
@@ -82,30 +82,11 @@ async function viaResend(b: Lead, to: string): Promise<{ id?: string; error?: st
   })
   if (error || !data?.id) {
     console.error("[lead] Resend error:", error)
-    return { error: `resend:${error?.name || "no_id"}` }
+    // Hide addresses before the reason is returned to the browser.
+    const msg = String(error?.message || "").replace(/[^\s()<>]+@[^\s()<>]+/g, "***").slice(0, 160)
+    return { error: `resend:${error?.name || "no_id"}${msg ? `: ${msg}` : ""}` }
   }
   return { id: data.id }
-}
-
-// Backup: FormSubmit (no API key). The first lead ever sent triggers a one-time
-// activation email to the recipient; leads are forwarded after that link is clicked.
-async function viaFormSubmit(b: Lead, to: string): Promise<{ error?: string }> {
-  try {
-    const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(to)}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json", Referer: "https://www.contreat.in/" },
-      body: JSON.stringify({ _subject: leadSubject(b), _template: "table", _captcha: "false", ...leadFields(b) }),
-    })
-    const json: any = await res.json().catch(() => ({}))
-    if (!res.ok || String(json.success) !== "true") {
-      console.error("[lead] FormSubmit error:", res.status, json)
-      return { error: `formsubmit:${res.status}:${String(json.message || "").slice(0, 80)}` }
-    }
-    return {}
-  } catch (e) {
-    console.error("[lead] FormSubmit exception:", e)
-    return { error: "formsubmit:network" }
-  }
 }
 
 export async function sendLead(b: Lead): Promise<SendResult> {
@@ -113,7 +94,5 @@ export async function sendLead(b: Lead): Promise<SendResult> {
   console.log("[lead] submission:", JSON.stringify(leadFields(b)))
   const r = await viaResend(b, to)
   if (r.id) return { ok: true, via: "resend", id: r.id }
-  const f = await viaFormSubmit(b, process.env.BACKUP_EMAIL || to)
-  if (!f.error) return { ok: true, via: "formsubmit" }
-  return { ok: false, reasons: [r.error!, f.error] }
+  return { ok: false, reasons: [r.error!] }
 }

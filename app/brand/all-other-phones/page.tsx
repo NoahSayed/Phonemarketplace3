@@ -7,6 +7,7 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { useState } from "react"
 import { trackLead, trackFormError } from "@/lib/analytics"
+import { postLead } from "@/lib/submit-lead"
 
 export default function AllOtherPhonesPage() {
   return (
@@ -109,7 +110,7 @@ function SellPhoneForm() {
     try {
       console.log("[v0] Submitting form with data:", formData)
 
-      const response = await fetch("/api/contact", {
+      const response = await postLead("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

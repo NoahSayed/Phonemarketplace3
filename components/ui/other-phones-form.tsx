@@ -5,6 +5,7 @@ import { Label } from "./label"
 import { Button } from "./button"
 import { useToast } from "@/hooks/use-toast"
 import { trackLead, trackFormError } from "@/lib/analytics"
+import { postLead } from "@/lib/submit-lead"
 
 export function OtherPhonesForm() {
   const { toast } = useToast()
@@ -22,7 +23,7 @@ export function OtherPhonesForm() {
     setIsSubmitting(true)
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await postLead("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

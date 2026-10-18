@@ -11,6 +11,7 @@ import { getBrandPhones } from "@/lib/phone-data"
 import { useState } from "react"
 import { CheckCircle } from "lucide-react"
 import { trackLead, trackFormError } from "@/lib/analytics"
+import { postLead } from "@/lib/submit-lead"
 
 export default function BrandPage() {
   const params = useParams()
@@ -211,7 +212,7 @@ function SellPhoneForm() {
     setError("")
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await postLead("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
