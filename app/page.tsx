@@ -120,6 +120,13 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
   { name: "Sell Used Galaxy S23", href: "/phone/used-galaxy-s23" },
   { name: "Sell Used Galaxy S22", href: "/phone/used-galaxy-s22" },
 ],
+"Selling Guides": [
+  { name: "iPhone Resale Value 2026", href: "/blog/iphone-resale-value-india" },
+  { name: "Samsung Resale Value 2026", href: "/blog/samsung-galaxy-resale-value-india" },
+  { name: "Pixel Resale Value 2026", href: "/blog/google-pixel-resale-value-india" },
+  { name: "How Your Price Is Calculated", href: "/blog/how-old-phone-price-is-calculated" },
+  { name: "Before You Sell: Checklist", href: "/blog/what-to-do-before-selling-your-phone" },
+],
 "Top Google Pixel Models": [
   { name: "Sell Used Pixel 10", href: "/phone/used-pixel-10" },
   { name: "Sell Used Pixel 9", href: "/phone/used-pixel-9" },
@@ -610,7 +617,7 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
   <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Quick Links</h3>
   
   <div className="max-w-6xl mx-auto px-1 ">
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 ">
       {Object.entries(comprehensiveQuickLinks).map(([category, links]) => (
         <div key={category} className="space-y-4">
           <h4 className="text-lg font-semibold text-gray-900 border-b border-gray-200 pt-5 pb-2 text-center">

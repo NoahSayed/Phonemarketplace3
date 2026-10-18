@@ -37,6 +37,12 @@ export function RelatedPhones({ phone }: { phone: PhoneModel }) {
         >
           See all {phone.brand} phones →
         </Link>
+        <Link
+          href={{ Apple: "/blog/iphone-resale-value-india", Samsung: "/blog/samsung-galaxy-resale-value-india", Google: "/blog/google-pixel-resale-value-india" }[phone.brand]}
+          className="inline-block mt-6 ml-6 font-medium text-green-700 hover:text-green-800"
+        >
+          {phone.brand} resale price list →
+        </Link>
       </div>
     </section>
   )

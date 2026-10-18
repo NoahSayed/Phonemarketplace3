@@ -102,7 +102,14 @@ export default function BrandPage() {
             <p className="text-gray-600">
               We buy {allPhones.length} {brandName} models, from the {allPhones[allPhones.length - 1]?.name} to the{" "}
               {allPhones[0]?.name}, for up to ₹{Math.max(...allPhones.map((p) => p.basePrice)).toLocaleString("en-IN")}.
-              Pick your model to get an instant quote.
+              Pick your model to get an instant quote, or see the{" "}
+              <Link
+                href={`/blog/${{ Apple: "iphone", Samsung: "samsung-galaxy", Google: "google-pixel" }[brandName]}-resale-value-india`}
+                className="font-medium text-green-700 underline hover:text-green-800"
+              >
+                {brandName} resale price list
+              </Link>
+              .
             </p>
             <div className="relative w-full max-w-xl">
               <Input
