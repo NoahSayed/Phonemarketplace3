@@ -1,8 +1,12 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import "./globals.css"
 import { Toaster } from "@/components/ui/toaster"
 import { SiteAnalytics } from "@/components/site-analytics"
+
+export const viewport: Viewport = {
+  themeColor: "#15803d",
+}
 
 export const metadata: Metadata = {
   // Add this line to fix the warnings
@@ -145,13 +149,7 @@ export default function RootLayout({
             }),
           }}
         />
-        
-        {/* AdSense script - replace with your actual ad client ID */}
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-          id="adsense-script"
-        />
+        <meta name="google-adsense-account" content="ca-pub-9902910443810636" />
       </head>
       <body>
         {children}

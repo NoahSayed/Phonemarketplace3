@@ -14,7 +14,7 @@ export function TypewriterText({
   loop = true,
   className = "",
 }: TypewriterTextProps) {
-  const [text, setText] = useState("")
+  const [text, setText] = useState(baseText + words[0])
   const [wordIndex, setWordIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
   const [typingSpeed, setTypingSpeed] = useState(150)

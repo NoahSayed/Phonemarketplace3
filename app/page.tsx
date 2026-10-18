@@ -1,6 +1,4 @@
-"use client"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { TypewriterText } from "@/components/ui/typewriter-text"
 import { ArrowRight, CheckCircle, Star, ShieldCheck, Clock, Smartphone, DollarSign, Zap } from "lucide-react"
@@ -9,8 +7,6 @@ import Footer from "@/components/footer"
 import FAQAccordion from "@/components/faq-accordion"
 
 export default function HomePage() {
-  const router = useRouter()
-
   const brandData = [
     {
       name: "Apple",
@@ -188,10 +184,6 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
     },
   ]
 
-  const scrollToBrands = () => {
-    document.getElementById("brands-section")?.scrollIntoView({ behavior: "smooth" })
-  }
-
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
@@ -217,10 +209,10 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
-                onClick={scrollToBrands}
-                className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                asChild
+                className="bg-green-700 hover:bg-green-800 text-white px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
               >
-                Sell My Phone Now
+                <a href="#brands-section">Sell My Phone Now</a>
               </Button>
             </div>
             <div className="flex gap-8 pt-8">
@@ -270,35 +262,38 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
                     <Button
                       variant="outline"
                       className="bg-transparent hover:bg-green-50 hover:border-green-300 transition-colors"
-                      onClick={() => router.push("/brand/apple")}
+                      asChild
                     >
-                      Apple
+                      <Link href="/brand/apple">Apple</Link>
                     </Button>
                     <Button
                       variant="outline"
                       className="bg-transparent hover:bg-blue-50 hover:border-blue-300 transition-colors"
-                      onClick={() => router.push("/brand/samsung")}
+                      asChild
                     >
-                      Samsung
+                      <Link href="/brand/samsung">Samsung</Link>
                     </Button>
                     <Button
                       variant="outline"
                       className="bg-transparent hover:bg-green-50 hover:border-green-300 transition-colors"
-                      onClick={() => router.push("/brand/google")}
+                      asChild
                     >
-                      Google
+                      <Link href="/brand/google">Google</Link>
                     </Button>
                     <Button
                       variant="outline"
                       className="bg-transparent hover:bg-purple-50 hover:border-purple-300 transition-colors "
-                      onClick={() => router.push("/brand/all-other-phones")}
+                      asChild
                     >
-                      Sell Other Phones
+                      <Link href="/brand/all-other-phones">Sell Other Phones</Link>
                     </Button>
                   </div>
                 </div>
-                <Button className="w-full bg-green-600 hover:bg-green-700 text-white text-lg rounded-xl mt-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-                  Get Instant Quote
+                <Button
+                  asChild
+                  className="w-full bg-green-700 hover:bg-green-800 text-white text-lg rounded-xl mt-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                >
+                  <a href="#brands-section">Get Instant Quote</a>
                 </Button>
               </div>
             </div>
@@ -325,12 +320,10 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center space-x-2 mb-2">
-                        <h4 className="font-semibold text-gray-900">{review.name}</h4>
-                        <div className="flex">
-                          {[...Array(review.rating)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                          ))}
-                        </div>
+                        <p className="font-semibold text-gray-900">{review.name}</p>
+                        <span className="text-yellow-400 text-sm leading-none tracking-tight" aria-label={`${review.rating} out of 5 stars`}>
+                          {"★".repeat(review.rating)}
+                        </span>
                       </div>
                       <p className="text-gray-600 text-sm">{review.review}</p>
                     </div>
@@ -349,12 +342,10 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center space-x-2 mb-2">
-                        <h4 className="font-semibold text-gray-900">{review.name}</h4>
-                        <div className="flex">
-                          {[...Array(review.rating)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                          ))}
-                        </div>
+                        <p className="font-semibold text-gray-900">{review.name}</p>
+                        <span className="text-yellow-400 text-sm leading-none tracking-tight" aria-label={`${review.rating} out of 5 stars`}>
+                          {"★".repeat(review.rating)}
+                        </span>
                       </div>
                       <p className="text-gray-600 text-sm">{review.review}</p>
                     </div>
@@ -418,7 +409,7 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Sell Used {brand.name}</h3>
                 <p className="text-gray-600 mb-4">{brand.description}</p>
-                <div className="inline-flex items-center text-green-600 font-semibold">
+                <div className="inline-flex items-center text-green-700 font-semibold">
                   <span>{brand.count}</span>
                   <ArrowRight className="ml-2 h-4 w-4 hover:translate-x-1 transition-transform" />
                 </div>
@@ -547,13 +538,17 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
                 <img
                   src="https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-1.jpg"
                   alt="second hand iPhone 15 for sale"
+                  width={570}
+                  height={650}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-contain p-8"
                 />
               </div>
-              <div className="absolute -top-4 -right-4 bg-green-500 text-white px-4 py-2 rounded-full font-semibold text-sm shadow-lg">
+              <div className="absolute -top-4 -right-4 bg-green-700 text-white px-4 py-2 rounded-full font-semibold text-sm shadow-lg">
                 95% Battery Health
               </div>
-              <div className="absolute -bottom-4 -left-4 bg-blue-500 text-white px-4 py-2 rounded-full font-semibold text-sm shadow-lg">
+              <div className="absolute -bottom-4 -left-4 bg-blue-700 text-white px-4 py-2 rounded-full font-semibold text-sm shadow-lg">
                 Under 3 months Apple warranty
               </div>
             </div>
@@ -587,11 +582,12 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
                   <span className="text-gray-700">Original accessories</span>
                 </div>
               </div>
-              <Link href="/buy-phone">
-                <Button className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-                  Buy second hand iPhone
-                </Button>
-              </Link>
+              <Button
+                asChild
+                className="bg-green-700 hover:bg-green-800 text-white px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              >
+                <Link href="/buy-phone">Buy second hand iPhone</Link>
+              </Button>
             </div>
           </div>
 
@@ -724,10 +720,10 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
             India.
           </p>
           <Button
-            onClick={scrollToBrands}
-            className="bg-white text-green-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+            asChild
+            className="bg-white text-green-700 hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
           >
-            Sell My Phone for Cash
+            <a href="#brands-section">Sell My Phone for Cash</a>
           </Button>
         </div>
       </section>

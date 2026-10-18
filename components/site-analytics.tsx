@@ -1,9 +1,54 @@
 "use client"
 import { useEffect } from "react"
-import Script from "next/script"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { GA_ID, track } from "@/lib/analytics"
+
+const ADSENSE_SRC = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+
+function addScript(src: string) {
+  const s = document.createElement("script")
+  s.src = src
+  s.async = true
+  document.head.appendChild(s)
+}
+
+// Google tag + AdSense are ~240 KB of script that block the main thread on phones.
+// The gtag() stub queues the page view and any events at once; the real scripts
+// load on the first scroll/tap/key press, or after 6 s if the visitor does nothing.
+function DeferredGoogleScripts() {
+  useEffect(() => {
+    const w = window as unknown as { dataLayer: unknown[]; gtag: (...a: unknown[]) => void }
+    if (GA_ID && !w.gtag) {
+      w.dataLayer = w.dataLayer || []
+      w.gtag = function gtag() {
+        // gtag.js expects the arguments object, not an array
+        // eslint-disable-next-line prefer-rest-params
+        w.dataLayer.push(arguments)
+      }
+      w.gtag("js", new Date())
+      w.gtag("config", GA_ID)
+    }
+
+    let loaded = false
+    const events = ["scroll", "pointerdown", "keydown", "touchstart"] as const
+    const load = () => {
+      if (loaded) return
+      loaded = true
+      events.forEach((e) => window.removeEventListener(e, load))
+      clearTimeout(timer)
+      if (GA_ID) addScript(`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`)
+      addScript(ADSENSE_SRC)
+    }
+    events.forEach((e) => window.addEventListener(e, load, { once: true, passive: true }))
+    const timer = setTimeout(load, 6000)
+    return () => {
+      events.forEach((e) => window.removeEventListener(e, load))
+      clearTimeout(timer)
+    }
+  }, [])
+  return null
+}
 
 // Tracks clicks on email / phone / WhatsApp links anywhere on the site.
 function ContactClickTracker() {
@@ -25,14 +70,7 @@ function ContactClickTracker() {
 export function SiteAnalytics() {
   return (
     <>
-      {GA_ID && (
-        <>
-          <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
-          <Script id="ga4-init" strategy="afterInteractive">
-            {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config','${GA_ID}');`}
-          </Script>
-        </>
-      )}
+      <DeferredGoogleScripts />
       <Analytics />
       <SpeedInsights />
       <ContactClickTracker />
