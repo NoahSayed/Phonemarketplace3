@@ -7,6 +7,7 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import FAQAccordion from "@/components/faq-accordion"
 import { pageMeta } from "@/lib/seo"
+import { getBrandPhones } from "@/lib/phone-data"
 
 export const metadata = pageMeta(
   "/",
@@ -20,22 +21,22 @@ export default function HomePage() {
     {
       name: "Apple",
       logo: "🍎",
-      description: "iPhone 6 to iPhone 16 series",
-      count: "20+ models",
+      description: "iPhone 6 to iPhone 18 series",
+      count: `${getBrandPhones("Apple").length} models`,
       color: "from-gray-900 to-gray-700",
     },
     {
       name: "Samsung",
       logo: "📱",
-      description: "Galaxy S6 to S25 series",
-      count: "25+ models",
+      description: "Galaxy S22 to S25 series",
+      count: `${getBrandPhones("Samsung").length} models`,
       color: "from-blue-600 to-blue-800",
     },
     {
       name: "Google",
       logo: "🔍",
-      description: "Pixel 2 to Pixel 9 series",
-      count: "15+ models",
+      description: "Pixel 7 to Pixel 10 series",
+      count: `${getBrandPhones("Google").length} models`,
       color: "from-green-500 to-green-700",
     },
     {

@@ -1360,7 +1360,7 @@ export const phoneData: PhoneModel[] = [
   {
     id: "used-pixel-9",
 
-    name: "Pixel 9 ",
+    name: "Pixel 9",
 
     brand: "Google",
 

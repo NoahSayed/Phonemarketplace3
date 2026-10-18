@@ -99,7 +99,11 @@ export default function BrandPage() {
       <section className="py-8 bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-start gap-4">
-            <p className="text-gray-600">{allPhones.length} models available</p>
+            <p className="text-gray-600">
+              We buy {allPhones.length} {brandName} models, from the {allPhones[allPhones.length - 1]?.name} to the{" "}
+              {allPhones[0]?.name}, for up to ₹{Math.max(...allPhones.map((p) => p.basePrice)).toLocaleString("en-IN")}.
+              Pick your model to get an instant quote.
+            </p>
             <div className="relative w-full max-w-xl">
               <Input
                 type="search"

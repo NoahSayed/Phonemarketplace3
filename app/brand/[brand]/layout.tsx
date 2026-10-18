@@ -1,6 +1,7 @@
 import type React from "react"
 import { notFound } from "next/navigation"
 import { breadcrumbJsonLd, pageMeta } from "@/lib/seo"
+import { getBrandPhones } from "@/lib/phone-data"
 
 const BRANDS: Record<string, string> = { apple: "iPhones", samsung: "Samsung Galaxy Phones", google: "Google Pixel Phones" }
 
@@ -24,10 +25,24 @@ export function generateMetadata({ params }: { params: { brand: string } }) {
 export default function BrandLayout({ children, params }: { children: React.ReactNode; params: { brand: string } }) {
   const name = BRANDS[params.brand]
   if (!name) notFound()
-  const jsonLd = breadcrumbJsonLd([
-    { name: "Home", path: "/" },
-    { name: `Sell ${name}`, path: `/brand/${params.brand}` },
-  ])
+  const brandName = (params.brand.charAt(0).toUpperCase() + params.brand.slice(1)) as "Apple" | "Samsung" | "Google"
+  const jsonLd = [
+    breadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: `Sell ${name}`, path: `/brand/${params.brand}` },
+    ]),
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: `Used ${name} we buy`,
+      itemListElement: getBrandPhones(brandName).map((p, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: `Sell used ${p.name}`,
+        url: `https://www.contreat.in/phone/${p.id}`,
+      })),
+    },
+  ]
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
