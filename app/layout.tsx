@@ -152,7 +152,7 @@ export default function RootLayout({
         <meta name="google-adsense-account" content="ca-pub-9902910443810636" />
       </head>
       <body>
-        {children}
+        <main>{children}</main>
         <Toaster />
         <SiteAnalytics />
       </body>
