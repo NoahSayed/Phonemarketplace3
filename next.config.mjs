@@ -1,3 +1,12 @@
+import { readFileSync } from 'node:fs'
+
+// Every image host used in lib/phone-data.ts, so adding a phone never needs a config change.
+const imageHosts = [
+  ...new Set(
+    [...readFileSync(new URL('./lib/phone-data.ts', import.meta.url), 'utf8').matchAll(/https:\/\/([^/"']+)\//g)].map((m) => m[1]),
+  ),
+]
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Your existing settings - kept exactly as they are
@@ -8,20 +17,9 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    // Phone photos are hot-linked from these sites. Next/Image resizes them,
+    // Phone photos are hot-linked from other sites. Next/Image resizes them,
     // converts them to WebP and serves them from contreat.in (no third-party cookies).
-    remotePatterns: [
-      'fdn2.gsmarena.com',
-      'm.media-amazon.com',
-      'images-eu.ssl-images-amazon.com',
-      'images-cdn.ubuy.co.in',
-      's3bg.cashify.in',
-      'fonezone.me',
-      'cashsecond.s3.ap-south-1.amazonaws.com',
-      'www.neolight.in',
-      'i.gadgets360cdn.com',
-      'cdsassets.apple.com',
-    ].map((hostname) => ({ protocol: 'https', hostname })),
+    remotePatterns: imageHosts.map((hostname) => ({ protocol: 'https', hostname })),
     deviceSizes: [640, 828, 1080, 1200],
     imageSizes: [96, 160, 256, 384],
     minimumCacheTTL: 2678400, // 31 days; the source photos never change

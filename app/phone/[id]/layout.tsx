@@ -1,7 +1,13 @@
 import type React from "react"
 import { notFound } from "next/navigation"
-import { getPhoneById } from "@/lib/phone-data"
+import { getPhoneById, phoneData } from "@/lib/phone-data"
 import { pageMeta } from "@/lib/seo"
+
+// Build every phone page at deploy time (served from the CDN); other ids 404.
+export const dynamicParams = false
+export function generateStaticParams() {
+  return phoneData.map((phone) => ({ id: phone.id }))
+}
 
 export function generateMetadata({ params }: { params: { id: string } }) {
   const phone = getPhoneById(params.id)

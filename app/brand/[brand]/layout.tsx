@@ -4,6 +4,12 @@ import { pageMeta } from "@/lib/seo"
 
 const BRANDS: Record<string, string> = { apple: "iPhones", samsung: "Samsung Galaxy Phones", google: "Google Pixel Phones" }
 
+// Build the brand pages at deploy time (served from the CDN); other brands 404.
+export const dynamicParams = false
+export function generateStaticParams() {
+  return Object.keys(BRANDS).map((brand) => ({ brand }))
+}
+
 export function generateMetadata({ params }: { params: { brand: string } }) {
   const name = BRANDS[params.brand]
   if (!name) return {}
