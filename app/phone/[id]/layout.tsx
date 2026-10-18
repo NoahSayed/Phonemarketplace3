@@ -2,6 +2,7 @@ import type React from "react"
 import { notFound } from "next/navigation"
 import { getPhoneById, phoneData } from "@/lib/phone-data"
 import { breadcrumbJsonLd, pageMeta } from "@/lib/seo"
+import { phoneFaqJsonLd } from "@/lib/phone-faq"
 
 // Build every phone page at deploy time (served from the CDN); other ids 404.
 export const dynamicParams = false
@@ -25,11 +26,11 @@ export default function PhoneLayout({ children, params }: { children: React.Reac
   const phone = getPhoneById(params.id)
   if (!phone) notFound()
   const brandPath = `/brand/${phone.brand.toLowerCase()}`
-  const jsonLd = breadcrumbJsonLd([
+  const jsonLd = [phoneFaqJsonLd(phone), breadcrumbJsonLd([
     { name: "Home", path: "/" },
     { name: `Sell ${phone.brand}`, path: brandPath },
     { name: `Sell Used ${phone.name}`, path: `/phone/${phone.id}` },
-  ])
+  ])]
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

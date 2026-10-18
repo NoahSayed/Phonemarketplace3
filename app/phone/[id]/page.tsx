@@ -19,6 +19,7 @@ import { trackLead, trackFormError } from "@/lib/analytics"
 import { postLead } from "@/lib/submit-lead"
 
 import { RelatedPhones } from "@/components/related-phones"
+import { PhoneFaqSection } from "@/components/phone-faq-section"
 
 export default function PhoneDetailPage() {
   const params = useParams()
@@ -546,6 +547,7 @@ export default function PhoneDetailPage() {
         </div>
       </div>
 
+      <PhoneFaqSection phone={phone} />
       <RelatedPhones phone={phone} />
       <Footer />
     </div>
