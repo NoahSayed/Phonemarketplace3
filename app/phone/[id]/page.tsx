@@ -18,7 +18,7 @@ import { useToast } from "@/hooks/use-toast"
 import { trackLead, trackFormError } from "@/lib/analytics"
 import { postLead } from "@/lib/submit-lead"
 
-import { OtherPhonesForm } from "@/components/ui/other-phones-form"
+import { RelatedPhones } from "@/components/related-phones"
 
 export default function PhoneDetailPage() {
   const params = useParams()
@@ -546,6 +546,7 @@ export default function PhoneDetailPage() {
         </div>
       </div>
 
+      <RelatedPhones phone={phone} />
       <Footer />
     </div>
   )
