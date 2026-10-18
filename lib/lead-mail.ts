@@ -1,4 +1,4 @@
-whereimport { Resend } from "resend"
+import { Resend } from "resend"
 
 // Where leads go if RECIPIENT_EMAIL is not set in Vercel.
 const DEFAULT_RECIPIENT = "itsselloldphone@gmail.com"
