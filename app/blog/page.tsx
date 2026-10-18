@@ -5,7 +5,7 @@ import { blogPosts } from "@/lib/blog-posts"
 import { Calendar, User, ArrowRight } from "lucide-react"
 
 
-const categories = ["All", "Comparisons", "Reviews", "Selling Tips", "Innovation"]
+const categories = ["All", "Price Guides", "Comparisons", "Reviews", "Selling Tips", "Innovation"]
 
 const popularKeywords = [
   "sell old phone online",

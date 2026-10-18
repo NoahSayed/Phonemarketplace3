@@ -1,6 +1,83 @@
 // Blog post list, shared by the blog index and the Article structured data.
 export const blogPosts = [
   {
+    id: "iphone-resale-value-india",
+    title: "iPhone Resale Value in India 2026: Price for Every Model",
+    excerpt:
+      "What every iPhone from the iPhone 6 to the iPhone 18 Pro Max sells for in India today, like new and after a year of use.",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Price Guides",
+    keywords: ["iPhone resale value", "sell old iPhone", "iPhone price India", "used iPhone price"],
+    readTime: "5 min read",
+  },
+  {
+    id: "samsung-galaxy-resale-value-india",
+    title: "Samsung Galaxy Resale Value in India 2026: Price for Every Model",
+    excerpt:
+      "Current resale prices for Galaxy S22 to S25 Ultra in India, with what lowers the price and how to get the most.",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Price Guides",
+    keywords: ["Samsung resale value", "sell Samsung phone", "Galaxy S24 price", "used Galaxy price"],
+    readTime: "4 min read",
+  },
+  {
+    id: "google-pixel-resale-value-india",
+    title: "Google Pixel Resale Value in India 2026: Price for Every Model",
+    excerpt:
+      "Current resale prices for Pixel 7 to Pixel 10 Pro XL in India, like new and after a year of use.",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Price Guides",
+    keywords: ["Pixel resale value", "sell Google Pixel", "Pixel 9 price", "used Pixel price"],
+    readTime: "4 min read",
+  },
+  {
+    id: "how-old-phone-price-is-calculated",
+    title: "How Your Old Phone's Price Is Calculated (Every Deduction)",
+    excerpt:
+      "The exact formula behind every Contreat quote, with every deduction for age, screen, body, faults and missing accessories.",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Selling Tips",
+    keywords: ["old phone price", "phone resale value calculator", "mobile buyback price", "phone price deductions"],
+    readTime: "4 min read",
+  },
+  {
+    id: "what-to-do-before-selling-your-phone",
+    title: "What to Do Before Selling Your Phone: Backup, Sign Out, Reset",
+    excerpt:
+      "A step-by-step checklist for iPhone and Android: back up, move your SIM, sign out of iCloud or Google, and factory reset.",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Selling Tips",
+    keywords: ["before selling phone", "factory reset iPhone", "remove Google account", "backup phone"],
+    readTime: "5 min read",
+  },
+  {
+    id: "check-battery-health-before-selling",
+    title: "How to Check Battery Health Before Selling Your Phone",
+    excerpt:
+      "Where to find battery health on iPhone, Samsung and Pixel, and how much a worn battery changes your phone's price.",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Selling Tips",
+    keywords: ["check battery health", "iPhone battery health", "Samsung battery status", "sell phone battery"],
+    readTime: "3 min read",
+  },
+  {
+    id: "sell-old-phone-mumbai",
+    title: "Sell Old Phone in Mumbai: Online Quote and Free Pickup",
+    excerpt:
+      "Sell your old phone in Mumbai without visiting a shop: instant online quote, free doorstep pickup and payment at pickup.",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Selling Tips",
+    keywords: ["sell old phone Mumbai", "sell mobile Mumbai", "old phone buyer Mumbai", "sell iPhone Mumbai"],
+    readTime: "3 min read",
+  },
+  {
     id: "iphone-16-pro-vs-samsung-s25-ultra",
     title: "iPhone 16 Pro vs Samsung Galaxy S25 Ultra: Complete Comparison 2024",
     excerpt:

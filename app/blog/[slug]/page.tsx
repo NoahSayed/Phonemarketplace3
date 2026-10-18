@@ -5,8 +5,9 @@ import { Calendar, User, ArrowLeft, Share2 } from "lucide-react"
 import { notFound } from "next/navigation"
 import { pageMeta } from "@/lib/seo"
 import { blogPosts } from "@/lib/blog-posts"
+import { blogArticles } from "@/lib/blog-articles"
 
-const blogContent = {
+const legacyContent = {
   "iphone-16-pro-vs-samsung-s25-ultra": {
     title: "iPhone 16 Pro vs Samsung Galaxy S25 Ultra: Complete Comparison 2024",
     date: "2024-12-15",
@@ -54,6 +55,8 @@ const blogContent = {
     `,
   },
 }
+
+const blogContent = { ...legacyContent, ...blogArticles }
 
 interface BlogPostPageProps {
   params: {
@@ -124,7 +127,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
           {/* Article Content */}
           <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
-            <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: post.content }} />
+            <div className="article-body max-w-none text-lg" dangerouslySetInnerHTML={{ __html: post.content }} />
           </div>
 
           {/* Related Articles CTA */}
