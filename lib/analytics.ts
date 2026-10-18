@@ -1,9 +1,9 @@
 "use client"
 import { track as vercelTrack } from "@vercel/analytics"
 
-// Google Analytics 4 measurement ID (public, safe to commit). Set NEXT_PUBLIC_GA_ID
-// in Vercel, or paste the "G-XXXXXXX" ID here.
-export const GA_ID = process.env.NEXT_PUBLIC_GA_ID || ""
+// Google Analytics 4 measurement ID (public, safe to commit). NEXT_PUBLIC_GA_ID in
+// Vercel overrides it.
+export const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-1SD5D4FFM8"
 
 type Params = Record<string, string | number | boolean | undefined>
 
