@@ -9,7 +9,7 @@ import { blogArticles } from "@/lib/blog-articles"
 
 const legacyContent = {
   "iphone-16-pro-vs-samsung-s25-ultra": {
-    title: "iPhone 16 Pro vs Samsung Galaxy S25 Ultra: Complete Comparison 2024",
+    title: "iPhone 16 Pro vs Galaxy S25 Ultra: Full Comparison",
     date: "2024-12-15",
     author: "Tech Expert",
     category: "Comparisons",
@@ -32,7 +32,7 @@ const legacyContent = {
     `,
   },
   "samsung-galaxy-s24-ultra-features": {
-    title: "Samsung Galaxy S24 Ultra: All Features and Specifications Explained",
+    title: "Galaxy S24 Ultra Features and Specs Explained",
     date: "2024-12-10",
     author: "Mobile Reviewer",
     category: "Reviews",

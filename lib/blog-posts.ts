@@ -79,7 +79,7 @@ export const blogPosts = [
   },
   {
     id: "iphone-16-pro-vs-samsung-s25-ultra",
-    title: "iPhone 16 Pro vs Samsung Galaxy S25 Ultra: Complete Comparison 2024",
+    title: "iPhone 16 Pro vs Galaxy S25 Ultra: Full Comparison",
     excerpt:
       "Detailed comparison of Apple's iPhone 16 Pro and Samsung's Galaxy S25 Ultra. Camera quality, performance, battery life, and value for money analyzed.",
     date: "2024-12-15",
@@ -101,7 +101,7 @@ export const blogPosts = [
   },
   {
     id: "samsung-galaxy-s24-ultra-features",
-    title: "Samsung Galaxy S24 Ultra: All Features and Specifications Explained",
+    title: "Galaxy S24 Ultra Features and Specs Explained",
     excerpt:
       "Complete guide to Samsung Galaxy S24 Ultra features including S Pen functionality, camera capabilities, AI features, and performance benchmarks.",
     date: "2024-12-10",
