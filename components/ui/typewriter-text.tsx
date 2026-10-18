@@ -17,10 +17,20 @@ export function TypewriterText({
   const [text, setText] = useState(baseText + words[0])
   const [wordIndex, setWordIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
-  // Hold the first word for a few seconds so the headline is stable while the page loads.
-  const [typingSpeed, setTypingSpeed] = useState(3500)
+  const [typingSpeed, setTypingSpeed] = useState(1500)
+  // Keep the headline still until the visitor scrolls, taps or types, so the
+  // first screen is visually complete as soon as it paints (Speed Index).
+  const [active, setActive] = useState(false)
 
   useEffect(() => {
+    const start = () => setActive(true)
+    const events = ["scroll", "pointerdown", "keydown", "touchstart"] as const
+    events.forEach((e) => window.addEventListener(e, start, { once: true, passive: true }))
+    return () => events.forEach((e) => window.removeEventListener(e, start))
+  }, [])
+
+  useEffect(() => {
+    if (!active) return
     const word = words[wordIndex]
     const fullWord = baseText + word
     const shouldType = !isDeleting && text !== fullWord
@@ -47,12 +57,12 @@ export function TypewriterText({
     }, typingSpeed)
 
     return () => clearTimeout(timer)
-  }, [text, isDeleting, wordIndex, typingSpeed, words, baseText, loop])
+  }, [active, text, isDeleting, wordIndex, typingSpeed, words, baseText, loop])
 
   return (
     <span className={`inline-block min-h-[2rem] ${className}`}>
       {text}
-      <span className="inline-block w-0.5 h-7 -mb-0.5 bg-green-500 ml-1 animate-pulse" style={{ animationDuration: '1s' }} />
+      <span className={`inline-block w-0.5 h-7 -mb-0.5 bg-green-500 ml-1 ${active ? "animate-pulse" : ""}`} aria-hidden="true" />
     </span>
   )
 }
