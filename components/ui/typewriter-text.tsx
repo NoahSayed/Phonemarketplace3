@@ -17,7 +17,8 @@ export function TypewriterText({
   const [text, setText] = useState(baseText + words[0])
   const [wordIndex, setWordIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
-  const [typingSpeed, setTypingSpeed] = useState(150)
+  // Hold the first word for a few seconds so the headline is stable while the page loads.
+  const [typingSpeed, setTypingSpeed] = useState(3500)
 
   useEffect(() => {
     const word = words[wordIndex]

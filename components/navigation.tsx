@@ -50,8 +50,8 @@ const Navigation = () => {
                 href={link.href}
                 className={`font-medium transition-colors ${
                   isActiveLink(link.href)
-                    ? "text-green-600 border-b-2 border-green-600 pb-1" // Active state styling with green color and bottom border
-                    : "text-gray-700 hover:text-green-600"
+                    ? "text-green-700 border-b-2 border-green-700 pb-1" // Active state styling with green color and bottom border
+                    : "text-gray-700 hover:text-green-700"
                 }`}
               >
                 {link.label}
@@ -84,8 +84,8 @@ const Navigation = () => {
                   href={link.href}
                   className={`block px-3 py-2 font-medium transition-colors ${
                     isActiveLink(link.href)
-                      ? "text-green-600 bg-green-50 rounded-md" // Active state styling for mobile with background color
-                      : "text-gray-700 hover:text-green-600"
+                      ? "text-green-700 bg-green-50 rounded-md" // Active state styling for mobile with background color
+                      : "text-gray-700 hover:text-green-700"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
