@@ -122,11 +122,11 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {contactInfo.map((info, index) => (
               <div key={index} className="bg-white rounded-xl p-6 shadow-sm text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-full text-green-600 mb-4">
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-full text-green-700 mb-4">
                   {info.icon}
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{info.title}</h3>
-                <p className="text-green-600 font-medium mb-1">{info.details}</p>
+                <h2 className="text-lg font-semibold text-gray-900 mb-2">{info.title}</h2>
+                <p className="text-green-700 font-medium mb-1">{info.details}</p>
                 <p className="text-sm text-gray-600">{info.subtitle}</p>
               </div>
             ))}
@@ -222,7 +222,7 @@ export default function ContactPage() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 text-lg font-semibold"
+                  className="bg-green-700 hover:bg-green-800 text-white px-8 py-3 text-lg font-semibold"
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>

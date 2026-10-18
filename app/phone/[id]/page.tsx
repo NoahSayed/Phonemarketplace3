@@ -3,6 +3,7 @@ import { useParams } from "next/navigation"
 import type React from "react"
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowLeft, Star, Shield, Battery, Camera, Monitor, HardDrive, Zap, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -218,7 +219,7 @@ export default function PhoneDetailPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Link
           href={`/brand/${phone.brand.toLowerCase()}`}
-          className="inline-flex items-center text-gray-600 hover:text-green-600 mb-8 transition-colors"
+          className="inline-flex items-center text-gray-600 hover:text-green-700 mb-8 transition-colors"
         >
           <ArrowLeft className="h-5 w-5 mr-2" />
           Back to {phone.brand}
@@ -228,7 +229,16 @@ export default function PhoneDetailPage() {
           {/* Phone Image and Basic Info */}
           <div className="space-y-6">
             <div className="aspect-square bg-white rounded-2xl shadow-lg flex items-center justify-center overflow-hidden">
-              <img src={phone.image || "/placeholder.svg"} alt={phone.name} className="w-full h-full object-contain" />
+              <Image
+                src={phone.image || "/placeholder.svg"}
+                alt={phone.name}
+                width={512}
+                height={512}
+                sizes="(max-width: 1024px) 90vw, 512px"
+                priority
+                unoptimized={!phone.image}
+                className="w-full h-full object-contain"
+              />
             </div>
 
             <div className="bg-white rounded-xl p-6 shadow-sm">
@@ -241,9 +251,9 @@ export default function PhoneDetailPage() {
               </div>
 
               <p className="text-sm font-medium text-gray-500">Get up to</p>
-              <p className="text-4xl font-bold text-green-600 mb-4">₹{phone.basePrice.toLocaleString()}</p>
+              <p className="text-4xl font-bold text-green-700 mb-4">₹{phone.basePrice.toLocaleString()}</p>
 
-              <div className="flex items-center space-x-2 text-green-600">
+              <div className="flex items-center space-x-2 text-green-700">
                 <Shield className="h-5 w-5" />
                 <span className="font-medium">Certified Second Hand</span>
               </div>
@@ -307,7 +317,7 @@ export default function PhoneDetailPage() {
                 <div className="mb-6 p-6 bg-green-50 border-2 border-green-200 rounded-xl animate-bounce-in">
                   <div className="text-center">
                     <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <CheckCircle className="h-8 w-8 text-green-600" />
+                      <CheckCircle className="h-8 w-8 text-green-700" />
                     </div>
                     <h3 className="text-xl font-bold text-green-800 mb-2">Inquiry Submitted Successfully!</h3>
                     <p className="text-green-700 font-medium">We'll connect with you shortly to discuss your phone.</p>
@@ -367,7 +377,7 @@ export default function PhoneDetailPage() {
                       Storage Option *
                     </Label>
                     <Select value={formData.storage} onValueChange={handleStorageChange}>
-                      <SelectTrigger className="mt-2 h-12 text-base border-2 border-gray-200 focus:border-green-500 rounded-lg">
+                      <SelectTrigger id="storage" className="mt-2 h-12 text-base border-2 border-gray-200 focus:border-green-500 rounded-lg">
                         <SelectValue placeholder="Select storage option" />
                       </SelectTrigger>
                       <SelectContent>
@@ -385,7 +395,7 @@ export default function PhoneDetailPage() {
                       RAM Option *
                     </Label>
                     <Select value={formData.ram} onValueChange={handleRamChange}>
-                      <SelectTrigger className="mt-2 h-12 text-base border-2 border-gray-200 focus:border-green-500 rounded-lg">
+                      <SelectTrigger id="ram" className="mt-2 h-12 text-base border-2 border-gray-200 focus:border-green-500 rounded-lg">
                         <SelectValue placeholder="Select RAM option" />
                       </SelectTrigger>
                       <SelectContent>
@@ -449,7 +459,7 @@ export default function PhoneDetailPage() {
                               onClick={() => toggleDeduction(group.id, option.id)}
                               className={`p-3 text-left text-sm font-medium rounded-lg border-2 transition-colors ${
                                 active
-                                  ? "border-green-600 bg-green-50 text-green-800"
+                                  ? "border-green-700 bg-green-50 text-green-800"
                                   : "border-gray-200 bg-white text-gray-900 hover:border-green-500"
                               }`}
                             >
@@ -470,7 +480,7 @@ export default function PhoneDetailPage() {
                           name="originalBox"
                           checked={formData.originalBox}
                           onChange={handleInputChange}
-                          className="w-5 h-5 text-green-600 border-2 border-gray-300 rounded focus:ring-green-500 focus:ring-2"
+                          className="w-5 h-5 text-green-700 border-2 border-gray-300 rounded focus:ring-green-500 focus:ring-2"
                         />
                         <div className="ml-3">
                           <span className="text-base font-medium text-gray-900">Original Box</span>
@@ -484,7 +494,7 @@ export default function PhoneDetailPage() {
                           name="originalBill"
                           checked={formData.originalBill}
                           onChange={handleInputChange}
-                          className="w-5 h-5 text-green-600 border-2 border-gray-300 rounded focus:ring-green-500 focus:ring-2"
+                          className="w-5 h-5 text-green-700 border-2 border-gray-300 rounded focus:ring-green-500 focus:ring-2"
                         />
                         <div className="ml-3">
                           <span className="text-base font-medium text-gray-900">Original Bill</span>
@@ -498,7 +508,7 @@ export default function PhoneDetailPage() {
                           name="originalCharger"
                           checked={formData.originalCharger}
                           onChange={handleInputChange}
-                          className="w-5 h-5 text-green-600 border-2 border-gray-300 rounded focus:ring-green-500 focus:ring-2"
+                          className="w-5 h-5 text-green-700 border-2 border-gray-300 rounded focus:ring-green-500 focus:ring-2"
                         />
                         <div className="ml-3">
                           <span className="text-base font-medium text-gray-900">Original Charger</span>
@@ -510,7 +520,7 @@ export default function PhoneDetailPage() {
 
                   <div className="p-6 rounded-xl bg-green-50 border-2 border-green-200 text-center">
                     <p className="text-sm font-medium text-green-800">Your phone's price</p>
-                    <p className="text-4xl font-bold text-green-600">₹{quotedPrice.toLocaleString("en-IN")}</p>
+                    <p className="text-4xl font-bold text-green-700">₹{quotedPrice.toLocaleString("en-IN")}</p>
                     <p className="text-xs text-gray-500 mt-1">
                       {deductionPercent > 0
                         ? `₹${phone.basePrice.toLocaleString("en-IN")} less ${deductionPercent}% for condition and accessories`
@@ -521,7 +531,7 @@ export default function PhoneDetailPage() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-green-600 hover:bg-green-700 text-white text-lg font-semibold py-4 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+                    className="w-full bg-green-700 hover:bg-green-800 text-white text-lg font-semibold py-4 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
                   >
                     {isSubmitting ? "Submitting..." : "Sell Your Phone"}
                   </Button>

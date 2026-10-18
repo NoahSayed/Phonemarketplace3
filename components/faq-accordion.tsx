@@ -135,7 +135,7 @@ export default function FAQAccordion() {
                 </h3>
                 <div className="flex-shrink-0">
                   {openItems.has(index) ? (
-                    <ChevronUp className="h-5 w-5 text-green-600 transition-transform duration-200" />
+                    <ChevronUp className="h-5 w-5 text-green-700 transition-transform duration-200" />
                   ) : (
                     <ChevronDown className="h-5 w-5 text-gray-400 transition-transform duration-200" />
                   )}

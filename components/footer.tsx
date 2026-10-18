@@ -11,7 +11,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-green-700 rounded-lg flex items-center justify-center">
                 <Smartphone className="h-5 w-5 text-white" />
               </div>
               <span className="text-xl font-bold">Sell Old Phone</span>
@@ -76,19 +76,19 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
             <ul className="space-y-3">
               <li className="flex items-center space-x-2">
-                <Mail className="h-4 w-4 text-green-600" />
+                <Mail className="h-4 w-4 text-green-700" />
                 <a href="mailto:itsselloldphone@gmail.com" className="text-gray-400 hover:text-white transition-colors">
                   admin@contreat.in
                 </a>
               </li>
               <li className="flex items-center space-x-2">
-                <Phone className="h-4 w-4 text-green-600" />
+                <Phone className="h-4 w-4 text-green-700" />
                 <a href="tel:+91" className="text-gray-400 hover:text-white transition-colors">
                   +91 
                 </a>
               </li>
               <li className="flex items-center space-x-2">
-                <MapPin className="h-4 w-4 text-green-600" />
+                <MapPin className="h-4 w-4 text-green-700" />
                 <span className="text-gray-400">Mumbai, Maharashtra, India</span>
               </li>
             </ul>

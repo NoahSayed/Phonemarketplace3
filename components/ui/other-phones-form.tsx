@@ -75,9 +75,9 @@ export function OtherPhonesForm() {
       <h2 className="text-2xl font-bold text-gray-900 mb-6">Sell Any Other Phone</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <Label htmlFor="name">Full Name *</Label>
+          <Label htmlFor="op-name">Full Name *</Label>
           <Input
-            id="name"
+            id="op-name"
             value={formData.name}
             onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
             placeholder="Enter your full name"
@@ -86,9 +86,9 @@ export function OtherPhonesForm() {
         </div>
 
         <div>
-          <Label htmlFor="phone">Phone Number *</Label>
+          <Label htmlFor="op-phone">Phone Number *</Label>
           <Input
-            id="phone"
+            id="op-phone"
             value={formData.phone}
             onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
             placeholder="Enter your phone number"
@@ -97,9 +97,9 @@ export function OtherPhonesForm() {
         </div>
 
         <div>
-          <Label htmlFor="brandModel">Phone Brand and Model *</Label>
+          <Label htmlFor="op-brandModel">Phone Brand and Model *</Label>
           <Input
-            id="brandModel"
+            id="op-brandModel"
             value={formData.brandModel}
             onChange={(e) => setFormData(prev => ({ ...prev, brandModel: e.target.value }))}
             placeholder="e.g., OnePlus 9 Pro"
@@ -108,9 +108,9 @@ export function OtherPhonesForm() {
         </div>
 
         <div>
-          <Label htmlFor="condition">Phone Condition</Label>
+          <Label htmlFor="op-condition">Phone Condition</Label>
           <Input
-            id="condition"
+            id="op-condition"
             value={formData.condition}
             onChange={(e) => setFormData(prev => ({ ...prev, condition: e.target.value }))}
             placeholder="Describe your phone's condition"

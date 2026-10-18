@@ -2,6 +2,7 @@
 import { useParams } from "next/navigation"
 import type React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowLeft, Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -74,9 +75,14 @@ export default function BrandPage() {
           <div className="flex items-center space-x-6">
             <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center overflow-hidden">
               {phones[0] && (
-                <img
+                <Image
                   src={phones[0].image || "/placeholder.svg"}
-                  alt={brandName + " brand"}
+                  alt=""
+                  width={80}
+                  height={80}
+                  sizes="80px"
+                  priority
+                  unoptimized={!phones[0].image}
                   className="w-full h-full object-contain"
                 />
               )}
@@ -97,6 +103,7 @@ export default function BrandPage() {
             <div className="relative w-full max-w-xl">
               <Input
                 type="search"
+                aria-label="Search phones"
                 placeholder="Search phones..."
                 className="pl-10 pr-4 py-2 w-full"
                 value={searchQuery}
@@ -117,19 +124,24 @@ export default function BrandPage() {
       <section className="py-12">
         <div className="max-w-[90%] mx-auto px-3 sm:px-4">
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {phones.map((phone) => (
+            {phones.map((phone, i) => (
               <Link key={phone.id} href={`/phone/${phone.id}`} className="block max-w-[280px] mx-auto w-full">
                 <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden hover:scale-105">
                   <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
-                    <img
+                    <Image
                       src={phone.image || "/placeholder.svg"}
                       alt={phone.name}
+                      width={256}
+                      height={256}
+                      sizes="(max-width: 640px) 45vw, 256px"
+                      priority={i < 4}
+                      unoptimized={!phone.image}
                       className="w-full h-full object-contain p-2"
                     />
                   </div>
 
                   <div className="p-2 sm:p-4">
-                    <h3 className="text-xs sm:text-base font-semibold text-gray-900 mb-1 truncate">{phone.name}</h3>
+                    <h2 className="text-xs sm:text-base font-semibold text-gray-900 mb-1 truncate">{phone.name}</h2>
 
                     <div className="space-y-1 mb-2 text-[10px] sm:text-sm">
                       <div className="flex justify-between">
@@ -143,16 +155,16 @@ export default function BrandPage() {
                     </div>
 
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-base sm:text-xl font-bold text-green-600">₹{phone.basePrice.toLocaleString()}</span>
+                      <span className="text-base sm:text-xl font-bold text-green-700">₹{phone.basePrice.toLocaleString()}</span>
                       <div className="flex items-center text-yellow-500">
                         <span className="text-sm sm:text-base">★</span>
                         <span className="ml-1 text-gray-700 text-xs sm:text-sm">4.5</span>
                       </div>
                     </div>
 
-                    <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 text-xs sm:text-sm rounded-lg transition-colors duration-200">
+                    <span className="flex w-full items-center justify-center bg-green-700 hover:bg-green-800 text-white font-semibold py-2 text-xs sm:text-sm rounded-lg transition-colors duration-200">
                       Sell Your Phone
-                    </Button>
+                    </span>
                   </div>
                 </div>
               </Link>
@@ -268,7 +280,7 @@ function SellPhoneForm() {
     return (
       <div className="text-center py-12">
         <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <CheckCircle className="h-8 w-8 text-green-600" />
+          <CheckCircle className="h-8 w-8 text-green-700" />
         </div>
         <h3 className="text-2xl font-semibold text-gray-900 mb-2">Quote Request Submitted!</h3>
         <p className="text-gray-600">We'll contact you within 24 hours with a quote for your phone.</p>
@@ -285,8 +297,9 @@ function SellPhoneForm() {
       )}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Name *</label>
+          <label htmlFor="bq-name" className="block text-sm font-medium text-gray-700 mb-2">Name *</label>
           <input
+            id="bq-name"
             type="text"
             required
             value={formData.name}
@@ -295,8 +308,9 @@ function SellPhoneForm() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+          <label htmlFor="bq-phone-number" className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
           <input
+            id="bq-phone-number"
             type="tel"
             required
             value={formData.phone}
@@ -307,8 +321,9 @@ function SellPhoneForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+        <label htmlFor="bq-email" className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
         <input
+            id="bq-email"
           type="email"
           required
           value={formData.email}
@@ -319,8 +334,9 @@ function SellPhoneForm() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Phone Brand *</label>
+          <label htmlFor="bq-phone-brand" className="block text-sm font-medium text-gray-700 mb-2">Phone Brand *</label>
           <select
+            id="bq-phone-brand"
             required
             value={formData.phoneBrand}
             onChange={(e) => setFormData((prev) => ({ ...prev, phoneBrand: e.target.value }))}
@@ -336,8 +352,9 @@ function SellPhoneForm() {
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Phone Model *</label>
+          <label htmlFor="bq-phone-model" className="block text-sm font-medium text-gray-700 mb-2">Phone Model *</label>
           <input
+            id="bq-phone-model"
             type="text"
             required
             placeholder="e.g., iPhone 14 Pro, Galaxy S23"
@@ -350,8 +367,9 @@ function SellPhoneForm() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Storage *</label>
+          <label htmlFor="bq-storage" className="block text-sm font-medium text-gray-700 mb-2">Storage *</label>
           <select
+            id="bq-storage"
             required
             value={formData.storage}
             onChange={(e) => setFormData((prev) => ({ ...prev, storage: e.target.value }))}
@@ -366,8 +384,9 @@ function SellPhoneForm() {
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">RAM</label>
+          <label htmlFor="bq-ram" className="block text-sm font-medium text-gray-700 mb-2">RAM</label>
           <select
+            id="bq-ram"
             value={formData.ram}
             onChange={(e) => setFormData((prev) => ({ ...prev, ram: e.target.value }))}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
@@ -381,8 +400,9 @@ function SellPhoneForm() {
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Condition *</label>
+          <label htmlFor="bq-condition" className="block text-sm font-medium text-gray-700 mb-2">Condition *</label>
           <select
+            id="bq-condition"
             required
             value={formData.condition}
             onChange={(e) => setFormData((prev) => ({ ...prev, condition: e.target.value }))}
@@ -416,7 +436,7 @@ function SellPhoneForm() {
                 type="checkbox"
                 checked={formData.issues.includes(issue)}
                 onChange={(e) => handleIssueChange(issue, e.target.checked)}
-                className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                className="w-4 h-4 text-green-700 border-gray-300 rounded focus:ring-green-500"
               />
               <span className="text-sm text-gray-700">{issue}</span>
             </label>
@@ -425,8 +445,9 @@ function SellPhoneForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">Pincode *</label>
+        <label htmlFor="bq-pincode" className="block text-sm font-medium text-gray-700 mb-2">Pincode *</label>
         <input
+            id="bq-pincode"
           type="text"
           required
           placeholder="Enter your pincode"
@@ -449,7 +470,7 @@ function SellPhoneForm() {
                 type="checkbox"
                 checked={formData[item.key as keyof typeof formData] as boolean}
                 onChange={(e) => setFormData((prev) => ({ ...prev, [item.key]: e.target.checked }))}
-                className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                className="w-4 h-4 text-green-700 border-gray-300 rounded focus:ring-green-500"
               />
               <span className="text-sm text-gray-700">{item.label}</span>
             </label>
@@ -458,8 +479,9 @@ function SellPhoneForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">Other Issues Or Any Additional Information</label>
+        <label htmlFor="bq-other-issues-or-any-additional-inform" className="block text-sm font-medium text-gray-700 mb-2">Other Issues Or Any Additional Information</label>
         <textarea
+            id="bq-other-issues-or-any-additional-inform"
           rows={4}
           value={formData.message}
           onChange={(e) => setFormData((prev) => ({ ...prev, message: e.target.value }))}
@@ -471,7 +493,7 @@ function SellPhoneForm() {
       <Button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-green-600 hover:bg-green-700 text-white py-4 text-lg font-semibold rounded-lg"
+        className="w-full bg-green-700 hover:bg-green-800 text-white py-4 text-lg font-semibold rounded-lg"
       >
         {isSubmitting ? "Submitting..." : "Get Quote for My Phone"}
       </Button>

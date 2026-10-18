@@ -80,7 +80,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       <article className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Back Button */}
-          <Link href="/blog" className="inline-flex items-center text-green-600 hover:text-green-700 mb-8">
+          <Link href="/blog" className="inline-flex items-center text-green-700 hover:text-green-800 mb-8">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Blog
           </Link>
@@ -127,7 +127,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             </p>
             <Link
               href="/"
-              className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+              className="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-800 transition-colors"
             >
               Get Quote Now
             </Link>

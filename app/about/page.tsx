@@ -79,7 +79,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <div key={index} className="text-center space-y-4">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full text-green-600">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full text-green-700">
                   {value.icon}
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900">{value.title}</h3>
@@ -91,7 +91,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-green-600 text-white">
+      <section className="py-20 bg-green-700 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div>

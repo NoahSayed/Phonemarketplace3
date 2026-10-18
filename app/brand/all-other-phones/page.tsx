@@ -170,7 +170,7 @@ function SellPhoneForm() {
     return (
       <div className="text-center py-12">
         <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <CheckCircle className="h-8 w-8 text-green-600" />
+          <CheckCircle className="h-8 w-8 text-green-700" />
         </div>
         <h3 className="text-2xl font-semibold text-gray-900 mb-2">Quote Request Submitted!</h3>
         <p className="text-gray-600">We'll contact you within 2 hours with the best resale value for your phone.</p>
@@ -189,8 +189,9 @@ function SellPhoneForm() {
       {/* Personal Information */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+          <label htmlFor="oq-full-name" className="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
           <input
+            id="oq-full-name"
             type="text"
             required
             value={formData.name}
@@ -200,8 +201,9 @@ function SellPhoneForm() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+          <label htmlFor="oq-phone-number" className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
           <input
+            id="oq-phone-number"
             type="tel"
             required
             value={formData.phone}
@@ -214,12 +216,13 @@ function SellPhoneForm() {
 
       {/* Phone Details */}
       <div className="border-t pt-6">
-        <h4 className="text-lg font-semibold text-gray-900 mb-4">Phone Details</h4>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Phone Details</h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Phone Brand *</label>
+            <label htmlFor="oq-phone-brand" className="block text-sm font-medium text-gray-700 mb-2">Phone Brand *</label>
             <select
+            id="oq-phone-brand"
               required
               value={formData.phoneBrand}
               onChange={(e) => setFormData((prev) => ({ ...prev, phoneBrand: e.target.value }))}
@@ -242,8 +245,9 @@ function SellPhoneForm() {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Phone Model *</label>
+            <label htmlFor="oq-phone-model" className="block text-sm font-medium text-gray-700 mb-2">Phone Model *</label>
             <input
+            id="oq-phone-model"
               type="text"
               required
               placeholder="e.g., iPhone 15 Pro, Galaxy S24, OnePlus 12"
@@ -256,8 +260,9 @@ function SellPhoneForm() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Storage *</label>
+            <label htmlFor="oq-storage" className="block text-sm font-medium text-gray-700 mb-2">Storage *</label>
             <select
+            id="oq-storage"
               required
               value={formData.storage}
               onChange={(e) => setFormData((prev) => ({ ...prev, storage: e.target.value }))}
@@ -273,8 +278,9 @@ function SellPhoneForm() {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">RAM</label>
+            <label htmlFor="oq-ram" className="block text-sm font-medium text-gray-700 mb-2">RAM</label>
             <select
+            id="oq-ram"
               value={formData.ram}
               onChange={(e) => setFormData((prev) => ({ ...prev, ram: e.target.value }))}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -293,8 +299,9 @@ function SellPhoneForm() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Overall Condition *</label>
+            <label htmlFor="oq-overall-condition" className="block text-sm font-medium text-gray-700 mb-2">Overall Condition *</label>
             <select
+            id="oq-overall-condition"
               required
               value={formData.condition}
               onChange={(e) => setFormData((prev) => ({ ...prev, condition: e.target.value }))}
@@ -309,8 +316,9 @@ function SellPhoneForm() {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Purchase Date</label>
+            <label htmlFor="oq-purchase-date" className="block text-sm font-medium text-gray-700 mb-2">Purchase Date</label>
             <input
+            id="oq-purchase-date"
               type="month"
               value={formData.purchaseDate}
               onChange={(e) => setFormData((prev) => ({ ...prev, purchaseDate: e.target.value }))}
@@ -355,8 +363,9 @@ function SellPhoneForm() {
       <div className="border-t pt-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Pincode *</label>
+            <label htmlFor="oq-pincode" className="block text-sm font-medium text-gray-700 mb-2">Pincode *</label>
             <input
+            id="oq-pincode"
               type="text"
               required
               placeholder="Enter your pincode for pickup"
@@ -389,8 +398,9 @@ function SellPhoneForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">Additional Details</label>
+        <label htmlFor="oq-additional-details" className="block text-sm font-medium text-gray-700 mb-2">Additional Details</label>
         <textarea
+            id="oq-additional-details"
           rows={4}
           value={formData.message}
           onChange={(e) => setFormData((prev) => ({ ...prev, message: e.target.value }))}

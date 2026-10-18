@@ -207,7 +207,7 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
             <h1 className="text-5xl md:text-6xl font-bold leading-tight text-gray-900">
               <span className="block">Sell Old Phone</span>
               <span className="block">Online for</span>
-              <span className="block text-green-600">
+              <span className="block text-green-700">
                 <TypewriterText baseText="Instant " words={["Cash", "Save", "Gain"]} />
               </span>
             </h1>
@@ -225,11 +225,11 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
             </div>
             <div className="flex gap-8 pt-8">
               <div className="flex items-center gap-2">
-                <span className="inline-block bg-green-100 text-green-600 rounded-full p-2">₹</span>
+                <span className="inline-block bg-green-100 text-green-700 rounded-full p-2">₹</span>
                 <span className="text-gray-700 font-medium">Best Prices</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="inline-block bg-green-100 text-green-600 rounded-full p-2">
+                <span className="inline-block bg-green-100 text-green-700 rounded-full p-2">
                   <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
                     <path
                       d="M3 10h14M10 3l7 7-7 7"
@@ -243,7 +243,7 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
                 <span className="text-gray-700 font-medium">Free Pickup</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="inline-block bg-green-100 text-green-600 rounded-full p-2">
+                <span className="inline-block bg-green-100 text-green-700 rounded-full p-2">
                   <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
                     <circle cx="10" cy="10" r="8" stroke="currentColor" strokeWidth="2" />
                     <path
@@ -323,7 +323,7 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
               {customerReviews.slice(0, 5).map((review, index) => (
                 <div key={`row1-${index}`} className="flex-shrink-0 w-80 bg-white rounded-xl p-6 review-card shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center font-semibold text-green-600">
+                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center font-semibold text-green-700">
                       {review.initial}
                     </div>
                     <div className="flex-1">
@@ -345,7 +345,7 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
               {customerReviews.slice(5, 10).map((review, index) => (
                 <div key={`row2-${index}`} className="flex-shrink-0 w-80 bg-white rounded-xl p-6 review-card shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center font-semibold text-green-600">
+                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center font-semibold text-green-700">
                       {review.initial}
                     </div>
                     <div className="flex-1">
@@ -379,7 +379,7 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
                 className="text-center space-y-4 animate-fade-in-up bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full text-green-600">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full text-green-700">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900">{feature.title}</h3>
@@ -458,7 +458,7 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
             <div className="space-y-8">
               <div>
                 <h3 className="text-3xl font-bold text-gray-900 mb-4">second hand iPhone 15</h3>
-                <div className="text-4xl font-bold text-green-600 mb-6">₹45000</div>
+                <div className="text-4xl font-bold text-green-700 mb-6">₹45000</div>
                 <p className="text-lg text-gray-600 mb-6">
                   Buy certified pre-owned iPhone 15 with quality guarantee. All second hand smartphones under ₹60,000
                   come with warranty and original accessories.
@@ -467,25 +467,25 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
+                    <CheckCircle className="h-5 w-5 text-green-700" />
                   </div>
                   <span className="text-gray-700">Quality tested and certified</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
+                    <CheckCircle className="h-5 w-5 text-green-700" />
                   </div>
                   <span className="text-gray-700">Warranty included</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
+                    <CheckCircle className="h-5 w-5 text-green-700" />
                   </div>
                   <span className="text-gray-700">Original accessories</span>
                 </div>
               </div>
               <Link href="/buy-phone">
-                <Button className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                <Button className="bg-green-700 hover:bg-green-800 text-white px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
                   Buy second hand Phone
                 </Button>
               </Link>
@@ -509,7 +509,7 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
                         <button
                           key={index}
                           onClick={link.onClick}
-                          className="block text-left w-full text-gray-600 hover:text-green-600 transition-colors duration-200 text-sm hover:translate-x-1 transform transition-transform cursor-pointer"
+                          className="block text-left w-full text-gray-600 hover:text-green-700 transition-colors duration-200 text-sm hover:translate-x-1 transform transition-transform cursor-pointer"
                         >
                           {link.name}
                         </button>
@@ -517,7 +517,7 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
                         <Link
                           key={index}
                           href={link.href}
-                          className="block text-gray-600 hover:text-green-600 transition-colors duration-200 text-sm hover:translate-x-1 transform transition-transform"
+                          className="block text-gray-600 hover:text-green-700 transition-colors duration-200 text-sm hover:translate-x-1 transform transition-transform"
                         >
                           {link.name}
                         </Link>
@@ -564,7 +564,7 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
             <div className="space-y-8">
               <div>
                 <h3 className="text-3xl font-bold text-gray-900 mb-4">second hand iPhone 15</h3>
-                <div className="text-4xl font-bold text-green-600 mb-6">₹45000</div>
+                <div className="text-4xl font-bold text-green-700 mb-6">₹45000</div>
                 <p className="text-lg text-gray-600 mb-6">
                   Buy certified pre-owned iPhone 15 with quality guarantee. All second hand smartphones under ₹60,000
                   come with warranty and original accessories.
@@ -573,19 +573,19 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
+                    <CheckCircle className="h-5 w-5 text-green-700" />
                   </div>
                   <span className="text-gray-700">Quality tested and certified</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
+                    <CheckCircle className="h-5 w-5 text-green-700" />
                   </div>
                   <span className="text-gray-700">Warranty included</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
+                    <CheckCircle className="h-5 w-5 text-green-700" />
                   </div>
                   <span className="text-gray-700">Original accessories</span>
                 </div>
@@ -621,7 +621,7 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
                 <button
                   key={index}
                   onClick={link.onClick}
-                  className="block w-full text-gray-600 hover:text-green-600 transition-colors duration-200 text-sm hover:translate-x-1 transform transition-transform cursor-pointer"
+                  className="block w-full text-gray-600 hover:text-green-700 transition-colors duration-200 text-sm hover:translate-x-1 transform transition-transform cursor-pointer"
                 >
                   {link.name}
                 </button>
@@ -629,7 +629,7 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
                 <Link
                   key={index}
                   href={link.href}
-                  className="block text-gray-600 hover:text-green-600 transition-colors duration-200 text-sm hover:translate-x-1 transform transition-transform"
+                  className="block text-gray-600 hover:text-green-700 transition-colors duration-200 text-sm hover:translate-x-1 transform transition-transform"
                 >
                   {link.name}
                 </Link>

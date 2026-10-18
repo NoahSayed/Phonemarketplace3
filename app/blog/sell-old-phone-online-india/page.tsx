@@ -9,7 +9,7 @@ export default function SellOldPhoneOnlineIndia() {
       <Navigation />
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <Link href="/blog" className="inline-flex items-center text-green-600 hover:text-green-700 mb-8">
+        <Link href="/blog" className="inline-flex items-center text-green-700 hover:text-green-800 mb-8">
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Blog
         </Link>
@@ -58,7 +58,7 @@ export default function SellOldPhoneOnlineIndia() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div className="bg-white border rounded-lg p-6">
               <div className="flex items-center mb-4">
-                <Smartphone className="h-6 w-6 text-green-600 mr-2" />
+                <Smartphone className="h-6 w-6 text-green-700 mr-2" />
                 <h3 className="text-lg font-semibold">Our Platform</h3>
               </div>
               <p className="text-gray-600 mb-4">
@@ -93,7 +93,7 @@ export default function SellOldPhoneOnlineIndia() {
 
           <div className="space-y-6 mb-8">
             <div className="flex items-start">
-              <div className="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-semibold mr-4">
+              <div className="flex-shrink-0 w-8 h-8 bg-green-700 text-white rounded-full flex items-center justify-center font-semibold mr-4">
                 1
               </div>
               <div>
@@ -105,7 +105,7 @@ export default function SellOldPhoneOnlineIndia() {
             </div>
 
             <div className="flex items-start">
-              <div className="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-semibold mr-4">
+              <div className="flex-shrink-0 w-8 h-8 bg-green-700 text-white rounded-full flex items-center justify-center font-semibold mr-4">
                 2
               </div>
               <div>
@@ -117,7 +117,7 @@ export default function SellOldPhoneOnlineIndia() {
             </div>
 
             <div className="flex items-start">
-              <div className="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-semibold mr-4">
+              <div className="flex-shrink-0 w-8 h-8 bg-green-700 text-white rounded-full flex items-center justify-center font-semibold mr-4">
                 3
               </div>
               <div>
@@ -129,7 +129,7 @@ export default function SellOldPhoneOnlineIndia() {
             </div>
 
             <div className="flex items-start">
-              <div className="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-semibold mr-4">
+              <div className="flex-shrink-0 w-8 h-8 bg-green-700 text-white rounded-full flex items-center justify-center font-semibold mr-4">
                 4
               </div>
               <div>
@@ -176,14 +176,14 @@ export default function SellOldPhoneOnlineIndia() {
             <li>Xiaomi flagship models</li>
           </ul>
 
-          <div className="bg-green-600 text-white rounded-lg p-8 text-center">
+          <div className="bg-green-700 text-white rounded-lg p-8 text-center">
             <h2 className="text-2xl font-bold mb-4">Ready to Sell Your Old Phone Online?</h2>
             <p className="text-green-100 mb-6">
               Get instant quotes, free pickup, and best prices for your used mobile in India
             </p>
             <Link
               href="/"
-              className="inline-block bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+              className="inline-block bg-white text-green-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
               Sell Phone Online Now
             </Link>

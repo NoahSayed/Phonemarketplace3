@@ -92,7 +92,7 @@ export default function BestPhonesToSellPage() {
               Get an instant quote for your device and sell it for the best price. We offer free pickup and instant
               payment across India.
             </p>
-            <Link href="/brand/all-other-phones" className="text-green-600 hover:text-green-700 font-medium inline-block mt-2">
+            <Link href="/brand/all-other-phones" className="text-green-700 hover:text-green-800 font-medium inline-block mt-2">
               Get Instant Quote →
             </Link>
           </div>

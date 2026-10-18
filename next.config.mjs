@@ -8,14 +8,24 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
-    // Add image domains for your contreat.in website
-    domains: [
-      'contreat.in',
-      'www.contreat.in',
-      'cdn.contreat.in',
-      'images.contreat.in',
-    ],
+    // Phone photos are hot-linked from these sites. Next/Image resizes them,
+    // converts them to WebP and serves them from contreat.in (no third-party cookies).
+    remotePatterns: [
+      'fdn2.gsmarena.com',
+      'm.media-amazon.com',
+      'images-eu.ssl-images-amazon.com',
+      'images-cdn.ubuy.co.in',
+      's3bg.cashify.in',
+      'fonezone.me',
+      'cashsecond.s3.ap-south-1.amazonaws.com',
+      'www.neolight.in',
+      'mobitez.in',
+      'i.gadgets360cdn.com',
+      'cdsassets.apple.com',
+    ].map((hostname) => ({ protocol: 'https', hostname })),
+    deviceSizes: [640, 828, 1080, 1200],
+    imageSizes: [96, 160, 256, 384],
+    minimumCacheTTL: 2678400, // 31 days; the source photos never change
   },
 
   // SEO Performance optimizations

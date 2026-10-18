@@ -36,7 +36,7 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-green-700 rounded-lg flex items-center justify-center">
               <Smartphone className="h-5 w-5 text-white" />
             </div>
             <span className="text-xl font-bold text-gray-900">Sell Old Phone</span>
@@ -51,7 +51,7 @@ const Navigation = () => {
                 className={`font-medium transition-colors ${
                   isActiveLink(link.href)
                     ? "text-green-700 border-b-2 border-green-700 pb-1" // Active state styling with green color and bottom border
-                    : "text-gray-700 hover:text-green-700"
+                    : "text-gray-700 hover:text-green-800"
                 }`}
               >
                 {link.label}
@@ -85,7 +85,7 @@ const Navigation = () => {
                   className={`block px-3 py-2 font-medium transition-colors ${
                     isActiveLink(link.href)
                       ? "text-green-700 bg-green-50 rounded-md" // Active state styling for mobile with background color
-                      : "text-gray-700 hover:text-green-700"
+                      : "text-gray-700 hover:text-green-800"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >

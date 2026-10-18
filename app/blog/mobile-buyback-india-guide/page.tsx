@@ -128,7 +128,7 @@ export default function MobileBuybackGuidePage() {
               Use our instant quote calculator to get the best price for your device. We offer safe, secure, and
               hassle-free buyback service across India.
             </p>
-            <Link href="/" className="text-green-600 hover:text-green-700 font-medium inline-block mt-2">
+            <Link href="/" className="text-green-700 hover:text-green-800 font-medium inline-block mt-2">
               Get Started Now →
             </Link>
           </div>

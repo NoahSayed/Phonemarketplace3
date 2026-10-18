@@ -92,7 +92,7 @@ export default function BuyPhone() {
               />
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">{phone.name}</h1>
-            <div className="text-4xl font-bold text-green-600 mb-2">₹{phone.price.toLocaleString()}</div>
+            <div className="text-4xl font-bold text-green-700 mb-2">₹{phone.price.toLocaleString()}</div>
             <div className="text-lg text-gray-700 mb-2">
               Battery Health: <span className="font-semibold">{phone.battery}</span>
             </div>
@@ -108,7 +108,7 @@ export default function BuyPhone() {
               <div className="mb-6 p-6 bg-green-50 border-2 border-green-200 rounded-xl animate-bounce-in">
                 <div className="text-center">
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle className="h-8 w-8 text-green-600" />
+                    <CheckCircle className="h-8 w-8 text-green-700" />
                   </div>
                   <h3 className="text-xl font-bold text-green-800 mb-2">Order Submitted Successfully!</h3>
                   <p className="text-green-700 font-medium">We will contact you soon to complete your purchase.</p>
@@ -183,7 +183,7 @@ export default function BuyPhone() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-green-600 hover:bg-green-700 text-white text-lg font-semibold py-4 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+                className="w-full bg-green-700 hover:bg-green-800 text-white text-lg font-semibold py-4 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
               >
                 {isSubmitting ? "Submitting..." : "Buy Now"}
               </Button>

@@ -156,7 +156,7 @@ export default function BlogPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <nav className="flex text-sm text-gray-600" aria-label="Breadcrumb">
-          <Link href="/" className="hover:text-green-600">
+          <Link href="/" className="hover:text-green-700">
             Home
           </Link>
           <span className="mx-2">/</span>
@@ -230,10 +230,10 @@ export default function BlogPage() {
 
                   <Link
                     href={`/blog/${post.id}`}
-                    className="inline-flex items-center text-green-600 hover:text-green-700 font-medium"
+                    className="inline-flex items-center text-green-700 hover:text-green-800 font-medium"
                   >
-                    Read More
-                    <ArrowRight className="h-4 w-4 ml-1" />
+                    Read More<span className="sr-only">: {post.title}</span>
+                    <ArrowRight className="h-4 w-4 ml-1" aria-hidden="true" />
                   </Link>
                 </div>
               </article>
@@ -294,7 +294,7 @@ export default function BlogPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-green-600 text-white">
+      <section className="py-16 bg-green-700 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Sell Old Phone Online India - Get Cash Today!</h2>
           <p className="text-xl mb-8 text-green-100">
@@ -302,7 +302,7 @@ export default function BlogPage() {
           </p>
           <Link
             href="/"
-            className="inline-block bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+            className="inline-block bg-white text-green-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
           >
             Sell Phone Online Now
           </Link>
