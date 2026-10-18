@@ -60,20 +60,11 @@ export const metadata: Metadata = {
     title: "Sell Old Phone Online - Best Mobile Buyback Platform India | Contreat",
     description:
       "Sell old phone online for instant cash. Best mobile buyback platform in India with maximum value for used phones.",
-    images: [
-      {
-        url: "/og-image.jpg", // Now resolves to https://contreat.in/og-image.jpg
-        width: 1200,
-        height: 630,
-        alt: "Sell Old Phone Online - Mobile Buyback Platform",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Sell Old Phone Online - Instant Cash for Used Phones | Contreat",
     description: "Best mobile buyback platform in India. Sell used mobile for cash with instant quotes.",
-    images: ["/twitter-image.jpg"], // Now resolves to https://contreat.in/twitter-image.jpg
   },
   // Google Search Console: set NEXT_PUBLIC_GSC_VERIFICATION in Vercel to the code from the HTML-tag method.
   ...(process.env.NEXT_PUBLIC_GSC_VERIFICATION
@@ -120,30 +111,21 @@ export default function RootLayout({
               description: "Best mobile buyback platform in India for selling old phones online",
               url: "https://www.contreat.in",
               logo: "https://www.contreat.in/android-chrome-512x512.png",
+              email: "itsselloldphone@gmail.com",
               contactPoint: {
                 "@type": "ContactPoint",
-                telephone: "+91",
                 email: "itsselloldphone@gmail.com",
                 contactType: "customer service",
                 areaServed: "IN",
                 availableLanguage: ["English", "Hindi"],
               },
-              sameAs: [
-                "https://facebook.com/contreat",
-                "https://twitter.com/contreat",
-                "https://instagram.com/contreat",
-              ],
-              service: {
-                "@type": "Service",
-                name: "Mobile Buyback Service",
-                description: "Sell old phone online for instant cash with free pickup",
-                provider: {
-                  "@type": "Organization",
-                  name: "Sell Old Phone",
-                },
-                areaServed: {
-                  "@type": "Country",
-                  name: "India",
+              makesOffer: {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "Mobile Buyback Service",
+                  description: "Sell old phone online for instant cash with free pickup",
+                  areaServed: { "@type": "Country", name: "India" },
                 },
               },
             }),

@@ -1,6 +1,6 @@
 import type React from "react"
 import { notFound } from "next/navigation"
-import { pageMeta } from "@/lib/seo"
+import { breadcrumbJsonLd, pageMeta } from "@/lib/seo"
 
 const BRANDS: Record<string, string> = { apple: "iPhones", samsung: "Samsung Galaxy Phones", google: "Google Pixel Phones" }
 
@@ -22,6 +22,16 @@ export function generateMetadata({ params }: { params: { brand: string } }) {
 
 // Unknown brands return a real 404 (the page is a client component).
 export default function BrandLayout({ children, params }: { children: React.ReactNode; params: { brand: string } }) {
-  if (!BRANDS[params.brand]) notFound()
-  return children
+  const name = BRANDS[params.brand]
+  if (!name) notFound()
+  const jsonLd = breadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: `Sell ${name}`, path: `/brand/${params.brand}` },
+  ])
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {children}
+    </>
+  )
 }
