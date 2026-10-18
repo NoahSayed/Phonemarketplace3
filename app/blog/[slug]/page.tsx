@@ -3,6 +3,7 @@ import Footer from "@/components/footer"
 import Link from "next/link"
 import { Calendar, User, ArrowLeft, Share2 } from "lucide-react"
 import { notFound } from "next/navigation"
+import { pageMeta } from "@/lib/seo"
 
 const blogContent = {
   "iphone-16-pro-vs-samsung-s25-ultra": {
@@ -57,6 +58,12 @@ interface BlogPostPageProps {
   params: {
     slug: string
   }
+}
+
+export function generateMetadata({ params }: BlogPostPageProps) {
+  const post = blogContent[params.slug as keyof typeof blogContent]
+  if (!post) return {}
+  return pageMeta(`/blog/${params.slug}`, post.title, post.title)
 }
 
 export default function BlogPostPage({ params }: BlogPostPageProps) {

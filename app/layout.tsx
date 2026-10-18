@@ -12,7 +12,10 @@ export const metadata: Metadata = {
   // Add this line to fix the warnings
   metadataBase: new URL('https://www.contreat.in'),
   
-  title: "Sell Old Phone Online | Contreat.in - Instant Cash & Buyback India",
+  title: {
+    default: "Sell Old Phone Online | Contreat.in - Instant Cash & Buyback India",
+    template: "%s | Contreat.in",
+  },
   description:
     "Sell old phone online on Contreat.in for instant cash in India. Best mobile buyback platform with maximum value for used iPhone, Samsung, Google phones. Trade in old mobile for cash with free pickup & guaranteed payments.",
   keywords: [
@@ -52,7 +55,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://contreat.in",
+    url: "/",
     siteName: "Contreat",
     title: "Sell Old Phone Online - Best Mobile Buyback Platform India | Contreat",
     description:
@@ -71,9 +74,6 @@ export const metadata: Metadata = {
     title: "Sell Old Phone Online - Instant Cash for Used Phones | Contreat",
     description: "Best mobile buyback platform in India. Sell used mobile for cash with instant quotes.",
     images: ["/twitter-image.jpg"], // Now resolves to https://contreat.in/twitter-image.jpg
-  },
-  alternates: {
-    canonical: "https://www.contreat.in",
   },
   // Google Search Console: set NEXT_PUBLIC_GSC_VERIFICATION in Vercel to the code from the HTML-tag method.
   ...(process.env.NEXT_PUBLIC_GSC_VERIFICATION
@@ -118,8 +118,8 @@ export default function RootLayout({
               "@type": "Organization",
               name: "Contreat",
               description: "Best mobile buyback platform in India for selling old phones online",
-              url: "https://contreat.in",
-              logo: "https://contreat.in/logo.png",
+              url: "https://www.contreat.in",
+              logo: "https://www.contreat.in/android-chrome-512x512.png",
               contactPoint: {
                 "@type": "ContactPoint",
                 telephone: "+91",

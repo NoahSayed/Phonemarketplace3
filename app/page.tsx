@@ -5,6 +5,14 @@ import { ArrowRight, CheckCircle, Star, ShieldCheck, Clock, Smartphone, DollarSi
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import FAQAccordion from "@/components/faq-accordion"
+import { pageMeta } from "@/lib/seo"
+
+export const metadata = pageMeta(
+  "/",
+  "Sell Old Phone Online | Contreat.in - Instant Cash & Buyback India",
+  "Sell old phone online on Contreat.in for instant cash in India. Best mobile buyback platform with maximum value for used iPhone, Samsung, Google phones. Free pickup & guaranteed payments.",
+  true,
+)
 
 export default function HomePage() {
   const brandData = [
