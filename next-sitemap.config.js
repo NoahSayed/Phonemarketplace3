@@ -1,6 +1,22 @@
 // next-sitemap.config.js
+const fs = require('fs');
+const path = require('path');
+
+// Dynamic pages (/phone/[id], /brand/[brand]) are not found by next-sitemap on its own.
+function dynamicPaths() {
+  const src = fs.readFileSync(path.join(__dirname, 'lib', 'phone-data.ts'), 'utf8');
+  const ids = [...new Set([...src.matchAll(/id:\s*"([a-z0-9-]+)"/g)].map((m) => m[1]))];
+  const brands = ['apple', 'samsung', 'google'];
+  return [
+    ...brands.map((b) => `/brand/${b}`),
+    ...ids.map((id) => `/phone/${id}`),
+  ];
+}
+
 module.exports = {
-  siteUrl: 'https://your-domain.com',
+  additionalPaths: async (config) =>
+    Promise.all(dynamicPaths().map((p) => config.transform(config, p))),
+  siteUrl: 'https://www.contreat.in',
   generateRobotsTxt: true,
   transform: async (config, path) => {
     // Get the current date or page-specific last modified date

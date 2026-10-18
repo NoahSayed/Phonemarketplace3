@@ -1,10 +1,12 @@
 import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
+import { Toaster } from "@/components/ui/toaster"
+import { SiteAnalytics } from "@/components/site-analytics"
 
 export const metadata: Metadata = {
   // Add this line to fix the warnings
-  metadataBase: new URL('https://contreat.in'),
+  metadataBase: new URL('https://www.contreat.in'),
   
   title: "Sell Old Phone Online | Contreat.in - Instant Cash & Buyback India",
   description:
@@ -67,11 +69,12 @@ export const metadata: Metadata = {
     images: ["/twitter-image.jpg"], // Now resolves to https://contreat.in/twitter-image.jpg
   },
   alternates: {
-    canonical: "https://contreat.in",
+    canonical: "https://www.contreat.in",
   },
-  other: {
-    "google-site-verification": "your-google-verification-code",
-  },
+  // Google Search Console: set NEXT_PUBLIC_GSC_VERIFICATION in Vercel to the code from the HTML-tag method.
+  ...(process.env.NEXT_PUBLIC_GSC_VERIFICATION
+    ? { verification: { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION } }
+    : {}),
   generator: "v0.app",
   
   // Updated favicon configuration
@@ -152,16 +155,8 @@ export default function RootLayout({
       </head>
       <body>
         {children}
-        
-        {/* Example AdSense ad placement - replace with your actual ad slot ID */}
-        <ins
-          className="adsbygoogle"
-          style={{ display: "block" }}
-          data-ad-client="ca-pub-1234567890"
-          data-ad-slot="1234567890"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        />
+        <Toaster />
+        <SiteAnalytics />
       </body>
     </html>
   )

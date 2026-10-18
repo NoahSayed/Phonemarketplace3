@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { useState } from "react"
+import { trackLead, trackFormError } from "@/lib/analytics"
 
 export default function AllOtherPhonesPage() {
   return (
@@ -113,6 +114,8 @@ function SellPhoneForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           type: "mobile_resale_calculator",
+          formType: "other-phones-calculator",
+          page: window.location.pathname,
           ...formData,
           issues: formData.issues.join(", "),
         }),
@@ -123,7 +126,8 @@ function SellPhoneForm() {
       const result = await response.json()
       console.log("[v0] Response data:", result)
 
-      if (response.ok) {
+      if (response.ok && result.success) {
+        trackLead("other-phones-calculator", { brand: formData.phoneBrand, model: formData.phoneModel })
         setSubmitted(true)
         setFormData({
           name: "",
@@ -143,10 +147,12 @@ function SellPhoneForm() {
         })
       } else {
         setError(result.message || "Failed to submit form. Please try again.")
+        trackFormError("other-phones-calculator", String(result.message || response.status))
       }
     } catch (error) {
       console.error("[v0] Error submitting form:", error)
       setError("Network error. Please check your connection and try again.")
+      trackFormError("other-phones-calculator", "network")
     } finally {
       setIsSubmitting(false)
     }

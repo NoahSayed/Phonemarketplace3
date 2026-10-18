@@ -4,6 +4,7 @@ import { Input } from "./input"
 import { Label } from "./label"
 import { Button } from "./button"
 import { useToast } from "@/hooks/use-toast"
+import { trackLead, trackFormError } from "@/lib/analytics"
 
 export function OtherPhonesForm() {
   const { toast } = useToast()
@@ -14,22 +15,29 @@ export function OtherPhonesForm() {
     condition: "",
   })
 
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+    setIsSubmitting(true)
+
     try {
-      const response = await fetch("/api/contact2", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           ...formData,
+          phoneModel: formData.brandModel,
           formType: "other-phones",
+          page: window.location.pathname,
         }),
       })
+      const result = await response.json().catch(() => ({}))
 
-      if (response.ok) {
+      if (response.ok && result.success) {
+        trackLead("other-phones", { model: formData.brandModel })
         setFormData({
           name: "",
           phone: "",
@@ -41,13 +49,23 @@ export function OtherPhonesForm() {
           title: "Message sent successfully!",
           description: "We'll connect with you shortly to discuss your phone.",
         })
+      } else {
+        trackFormError("other-phones", String(result.message || response.status))
+        toast({
+          title: "Error",
+          description: result.message || "Something went wrong. Please try again.",
+          variant: "destructive",
+        })
       }
     } catch (error) {
+      trackFormError("other-phones", "network")
       toast({
         title: "Error",
         description: "Something went wrong. Please try again.",
         variant: "destructive",
       })
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -98,7 +116,9 @@ export function OtherPhonesForm() {
           />
         </div>
 
-        <Button type="submit" className="w-full">Submit Details</Button>
+        <Button type="submit" className="w-full" disabled={isSubmitting}>
+          {isSubmitting ? "Submitting..." : "Submit Details"}
+        </Button>
       </form>
     </div>
   )

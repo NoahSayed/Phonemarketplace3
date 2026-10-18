@@ -10,6 +10,7 @@ import Footer from "@/components/footer"
 import { getBrandPhones } from "@/lib/phone-data"
 import { useState } from "react"
 import { CheckCircle } from "lucide-react"
+import { trackLead, trackFormError } from "@/lib/analytics"
 
 export default function BrandPage() {
   const params = useParams()
@@ -202,10 +203,12 @@ function SellPhoneForm() {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError("")
 
     try {
       const response = await fetch("/api/contact", {
@@ -213,12 +216,16 @@ function SellPhoneForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           type: "sell_phone",
+          formType: "brand-quote",
+          page: window.location.pathname,
           ...formData,
           issues: formData.issues.join(", "),
         }),
       })
+      const result = await response.json().catch(() => ({}))
 
-      if (response.ok) {
+      if (response.ok && result.success) {
+        trackLead("brand-quote", { brand: formData.phoneBrand, model: formData.phoneModel })
         setSubmitted(true)
         setFormData({
           name: "",
@@ -236,9 +243,14 @@ function SellPhoneForm() {
           originalEarphones: false,
           message: "",
         })
+      } else {
+        setError(result.message || "Failed to submit form. Please try again.")
+        trackFormError("brand-quote", String(result.message || response.status))
       }
     } catch (error) {
       console.error("Error submitting form:", error)
+      setError("Network error. Please check your connection and try again.")
+      trackFormError("brand-quote", "network")
     } finally {
       setIsSubmitting(false)
     }
@@ -265,6 +277,11 @@ function SellPhoneForm() {
 
   return (
     <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6">
+      {error && (
+        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+          <p className="text-red-600 text-sm">{error}</p>
+        </div>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Name *</label>

@@ -14,6 +14,7 @@ import Footer from "@/components/footer"
 import { getPhoneById } from "@/lib/phone-data"
 import { deductionGroups, quotePrice, totalDeductionPercent, describeCondition } from "@/lib/price-formula"
 import { useToast } from "@/hooks/use-toast"
+import { trackLead, trackFormError } from "@/lib/analytics"
 
 import { OtherPhonesForm } from "@/components/ui/other-phones-form"
 
@@ -148,6 +149,7 @@ export default function PhoneDetailPage() {
           quotedPrice,
           condition: describeCondition(quoteInput),
           formType: "phone-detail",
+          page: window.location.pathname,
         }),
       })
 
@@ -155,7 +157,8 @@ export default function PhoneDetailPage() {
       const result = await response.json()
       console.log("[v0] Response data:", result.message)
 
-      if (response.ok) {
+      if (response.ok && result.success) {
+        trackLead("phone-detail", { brand: phone.brand, model: phone.name, value: quotedPrice })
         setShowSuccess(true)
         setFormData({
           name: "",
@@ -185,9 +188,13 @@ export default function PhoneDetailPage() {
       }
     } catch (error) {
       console.error("[v0] Form submission error:", error)
+      trackFormError("phone-detail", error instanceof Error ? error.message : "unknown")
       toast({
         title: "Error submitting form",
-        description: "Please try again later or contact support.",
+        description:
+          error instanceof Error && error.message.startsWith("Please")
+            ? error.message
+            : "Please try again, or email us at itsselloldphone@gmail.com.",
         variant: "destructive",
       })
     } finally {
