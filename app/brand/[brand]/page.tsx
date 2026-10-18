@@ -295,7 +295,7 @@ function SellPhoneForm() {
   return (
     <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6">
       {error && (
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+        <div role="alert" className="bg-red-50 border border-red-200 rounded-lg p-4">
           <p className="text-red-600 text-sm">{error}</p>
         </div>
       )}

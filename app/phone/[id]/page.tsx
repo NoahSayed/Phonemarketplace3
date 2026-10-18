@@ -442,7 +442,7 @@ export default function PhoneDetailPage() {
                         pattern="\d{6}"
                       />
                       <div className="text-sm text-gray-500 mt-1">Pincode is required.</div>
-                      {pincodeError && <div className="text-sm text-red-600 mt-1">{pincodeError}</div>}
+                      {pincodeError && <div role="alert" className="text-sm text-red-600 mt-1">{pincodeError}</div>}
                     </div>
                   </div>
 
