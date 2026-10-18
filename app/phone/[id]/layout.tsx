@@ -14,7 +14,7 @@ export function generateMetadata({ params }: { params: { id: string } }) {
   if (!phone) return {}
   return pageMeta(
     `/phone/${phone.id}`,
-    `Sell Used ${phone.name} Online – Best Price in India`,
+    `Sell Used ${phone.name} for Best Price`,
     `Sell your used ${phone.name} on Contreat. Get an instant price quote based on condition, free doorstep pickup and instant payment.`,
   )
 }

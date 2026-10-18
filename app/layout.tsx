@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.contreat.in'),
   
   title: {
-    default: "Sell Old Phone Online | Contreat.in - Instant Cash & Buyback India",
+    default: "Sell Old Phone Online for Instant Cash | Contreat.in",
     template: "%s | Contreat.in",
   },
   description:

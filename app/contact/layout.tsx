@@ -3,7 +3,7 @@ import { pageMeta } from "@/lib/seo"
 
 export const metadata = pageMeta(
   "/contact",
-  "Contact Us",
+  "Contact Contreat – Sell Your Old Phone",
   "Contact Contreat to sell your old phone. Email itsselloldphone@gmail.com for quotes, pickup and payment questions.",
 )
 
