@@ -369,10 +369,213 @@ const buybackOptions = `
   <p>Get your quote: <a href="/brand/apple">iPhone</a>, <a href="/brand/samsung">Samsung</a>, <a href="/brand/google">Pixel</a>
   or <a href="/brand/all-other-phones">any other phone</a>.</p>`
 
+const byId = (id: string) => phoneData.find((p) => p.id === id)!
+
+function compareTable(phones: PhoneModel[]) {
+  const ages: [string, string | undefined][] = [
+    ["Under 3 months", undefined],
+    ["3–6 months", "age_3_6"],
+    ["6–11 months", "age_6_11"],
+    ["Over 11 months", "age_11_plus"],
+  ]
+  const head = phones.map((p) => `<th>${phoneLink(p)}</th>`).join("")
+  const body = ages
+    .map(
+      ([label, id]) =>
+        `<tr><td>${label}</td>${phones
+          .map((p) => `<td>${inr(quotePrice(p.basePrice, { selected: id ? [id] : [], hasBox: true, hasCharger: true }))}</td>`)
+          .join("")}</tr>`,
+    )
+    .join("")
+  return `<div class="table-wrap"><table>
+    <thead><tr><th>Phone age, good condition</th>${head}</tr></thead>
+    <tbody>${body}</tbody></table></div>
+    <p>Prices Contreat pays today for a phone with box and charger and no damage. Open a model for an exact quote.</p>`
+}
+
+function iphone16ProVsS25Ultra() {
+  const ip = byId("used-iphone-16-pro")
+  const s = byId("used-galaxy-s25-ultra")
+  return `
+    <p>The iPhone 16 Pro and the Galaxy S25 Ultra are the two flagships people compare most. Here is how they differ, and how
+    much each one is worth when you sell it.</p>
+
+    <h2>Key differences</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th></th><th>iPhone 16 Pro</th><th>Galaxy S25 Ultra</th></tr></thead>
+      <tbody>
+        <tr><td>Chip</td><td>Apple A18 Pro</td><td>Snapdragon 8 Elite for Galaxy</td></tr>
+        <tr><td>Screen</td><td>6.3 inches</td><td>6.9 inches</td></tr>
+        <tr><td>Main camera</td><td>48 MP, 5x telephoto</td><td>200 MP, 5x and 3x telephoto</td></tr>
+        <tr><td>Stylus</td><td>No</td><td>Built-in S Pen</td></tr>
+        <tr><td>Storage we buy</td><td>${ip.specs.storage.join(", ")}</td><td>${s.specs.storage.join(", ")}</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Resale value</h2>
+    ${compareTable([ip, s])}
+
+    <h2>Which should you sell?</h2>
+    <p>If you are switching from one to the other, compare today's price of your phone with the cost of the new one.
+    Both lose value in the same steps as they age (11% after 3 months, 18% after 6 months, 25% after 11 months), so selling
+    before the next step keeps more money. See <a href="/blog/best-time-to-sell-your-iphone">the best time to sell</a>.</p>
+
+    <p>More prices: <a href="/blog/iphone-resale-value-india">every iPhone</a> and
+    <a href="/blog/samsung-galaxy-resale-value-india">every Samsung Galaxy</a>.</p>`
+}
+
+function s24UltraArticle() {
+  const s24 = byId("used-galaxy-s24-ultra")
+  const s23 = byId("used-galaxy-s23-ultra")
+  const s25 = byId("used-galaxy-s25-ultra")
+  return `
+    <p>The Galaxy S24 Ultra launched in January 2024 and is still one of the most popular Samsung phones to buy used.
+    Here are its main features and what it is worth today.</p>
+
+    <h2>Main features</h2>
+    <ul>
+      <li><strong>Chip:</strong> Snapdragon 8 Gen 3 for Galaxy, with 12 GB RAM.</li>
+      <li><strong>Screen:</strong> 6.8-inch flat display behind Corning Gorilla Armor glass, which cuts reflections.</li>
+      <li><strong>Frame:</strong> titanium, the first Samsung phone with one.</li>
+      <li><strong>Cameras:</strong> 200 MP main, 12 MP ultra-wide, 10 MP 3x and 50 MP 5x telephoto.</li>
+      <li><strong>S Pen:</strong> built in, stored inside the phone.</li>
+      <li><strong>Galaxy AI:</strong> Live Translate, Circle to Search and photo editing tools.</li>
+      <li><strong>Updates:</strong> Samsung promises 7 years of Android and security updates.</li>
+    </ul>
+
+    <h2>What a used S24 Ultra is worth</h2>
+    ${compareTable([s23, s24, s25])}
+
+    <h2>Before you sell</h2>
+    <p>Remove the phone from your Samsung and Google accounts and reset it (see our
+    <a href="/blog/what-to-do-before-selling-your-phone">checklist before selling</a>). Put the S Pen back in the phone:
+    it is part of the device. See every model in the <a href="/blog/samsung-galaxy-resale-value-india">Samsung Galaxy price list</a>.</p>`
+}
+
+function iphone15Vs16() {
+  const a = byId("used-iphone-15")
+  const b = byId("used-iphone-16")
+  const a11 = yearOld(a)
+  return `
+    <p>Thinking of moving from an iPhone 15 to an iPhone 16? Here is what changes, and how much selling your iPhone 15 brings
+    down the cost.</p>
+
+    <h2>What the iPhone 16 adds</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th></th><th>iPhone 15</th><th>iPhone 16</th></tr></thead>
+      <tbody>
+        <tr><td>Chip</td><td>A16 Bionic</td><td>A18</td></tr>
+        <tr><td>Apple Intelligence</td><td>Not supported</td><td>Supported</td></tr>
+        <tr><td>Buttons</td><td>Ring/silent switch</td><td>Action button and Camera Control</td></tr>
+        <tr><td>Cameras</td><td>48 MP main, 12 MP ultra-wide</td><td>48 MP main, 12 MP ultra-wide with macro, spatial video</td></tr>
+        <tr><td>Screen</td><td>6.1 inches</td><td>6.1 inches</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Resale value of both</h2>
+    ${compareTable([a, b])}
+
+    <h2>Is the upgrade worth it?</h2>
+    <p>The biggest reasons to upgrade are Apple Intelligence and the faster chip. An iPhone 15 older than 11 months in good
+    condition sells for about <strong>${inr(a11)}</strong> on Contreat, which you can put towards the new phone.
+    If your iPhone 15 works well and you don't need Apple Intelligence, keeping it is also reasonable: it loses value slowly
+    after the first year.</p>
+
+    <p>See <a href="/blog/iphone-resale-value-india">every iPhone's resale price</a> and
+    <a href="/blog/best-time-to-sell-your-iphone">the best time to sell your iPhone</a>.</p>`
+}
+
+function pixel9ProArticle() {
+  const p9 = byId("used-pixel-9-pro")
+  const p10 = byId("used-pixel-10-pro")
+  const p8 = byId("used-pixel-8-pro")
+  return `
+    <p>The Pixel 9 Pro is Google's 2024 compact flagship. Here is what it does well, and what it is worth if you sell it today.</p>
+
+    <h2>What stands out</h2>
+    <ul>
+      <li><strong>Size:</strong> a 6.3-inch screen, smaller than the Pixel 9 Pro XL, with the same cameras.</li>
+      <li><strong>Chip and memory:</strong> Google Tensor G4 with 16 GB RAM.</li>
+      <li><strong>Cameras:</strong> 50 MP main, 48 MP ultra-wide and 48 MP 5x telephoto, plus a 42 MP selfie camera.</li>
+      <li><strong>AI photo tools:</strong> Magic Editor, Best Take and Add Me.</li>
+      <li><strong>Updates:</strong> Google promises 7 years of Android and security updates.</li>
+    </ul>
+
+    <h2>Resale value compared with other Pixel Pros</h2>
+    ${compareTable([p8, p9, p10])}
+
+    <h2>Keep it or sell it?</h2>
+    <p>With 7 years of updates, the Pixel 9 Pro stays usable for a long time. Sell it if you want a newer model: the price falls
+    in steps as the phone gets older, so selling before the next step keeps more money. See the full
+    <a href="/blog/google-pixel-resale-value-india">Google Pixel price list</a>.</p>`
+}
+
+const foldables = `
+  <p>Foldable phones like the Samsung Galaxy Z Fold and Z Flip have more parts that can wear out than a normal phone.
+  Check these before you sell, because the buyer will.</p>
+
+  <h2>What to check on a foldable</h2>
+  <ul>
+    <li><strong>Inner screen:</strong> look for dead pixels, lines, or peeling of the factory screen protector. Do not peel it off yourself.</li>
+    <li><strong>Crease:</strong> a visible crease is normal; cracks or bubbles along it are not.</li>
+    <li><strong>Hinge:</strong> it should open and close smoothly, hold its position, and close flat without a gap.</li>
+    <li><strong>Outer (cover) screen:</strong> check for scratches and cracks, like any phone.</li>
+    <li><strong>Both screens' touch:</strong> draw across the whole screen to find dead spots.</li>
+  </ul>
+
+  <h2>How to sell your Fold or Flip to Contreat</h2>
+  <p>Use the <a href="/brand/all-other-phones">other phones form</a>: enter the model, storage and condition, including any
+  problem with the inner screen or hinge. We call you with a price and pick the phone up from your home for free.</p>
+
+  <h2>Before you sell</h2>
+  <p>Remove the phone from your Samsung and Google accounts and reset it. Our
+  <a href="/blog/what-to-do-before-selling-your-phone">checklist before selling</a> covers each step. Selling a Galaxy S model instead?
+  See the <a href="/blog/samsung-galaxy-resale-value-india">Samsung Galaxy price list</a>.</p>`
+
 export const blogArticles: Record<
   string,
   { title: string; date: string; author: string; category: string; readTime: string; content: string }
 > = {
+  "iphone-16-pro-vs-samsung-s25-ultra": {
+    title: "iPhone 16 Pro vs Galaxy S25 Ultra: Specs and Resale Value",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Comparisons",
+    readTime: "4 min read",
+    content: iphone16ProVsS25Ultra(),
+  },
+  "samsung-galaxy-s24-ultra-features": {
+    title: "Galaxy S24 Ultra: Features and Resale Value in 2026",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Reviews",
+    readTime: "4 min read",
+    content: s24UltraArticle(),
+  },
+  "iphone-15-vs-iphone-16-comparison": {
+    title: "iPhone 15 vs iPhone 16: Should You Upgrade?",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Comparisons",
+    readTime: "4 min read",
+    content: iphone15Vs16(),
+  },
+  "google-pixel-9-pro-review": {
+    title: "Google Pixel 9 Pro in 2026: Features and Resale Value",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Reviews",
+    readTime: "4 min read",
+    content: pixel9ProArticle(),
+  },
+  "samsung-galaxy-z-fold-6-features": {
+    title: "Selling a Galaxy Z Fold or Flip: What to Check First",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Selling Tips",
+    readTime: "4 min read",
+    content: foldables,
+  },
   "best-phones-to-sell": {
     title: "Best Phones to Sell in 2026: Models That Hold Their Value",
     date: "2026-10-19",

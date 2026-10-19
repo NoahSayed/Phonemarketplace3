@@ -20,7 +20,7 @@ const popularKeywords = [
   "Google Pixel 9 Pro",
   "iPhone 15 vs iPhone 16",
   "Galaxy Z Fold 6",
-  "best phone 2024",
+  "best phones to sell 2026",
   "sell old phone",
   "phone comparison",
   "smartphone review",

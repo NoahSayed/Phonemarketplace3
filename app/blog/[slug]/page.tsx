@@ -7,56 +7,7 @@ import { pageMeta } from "@/lib/seo"
 import { blogPosts } from "@/lib/blog-posts"
 import { blogArticles } from "@/lib/blog-articles"
 
-const legacyContent = {
-  "iphone-16-pro-vs-samsung-s25-ultra": {
-    title: "iPhone 16 Pro vs Galaxy S25 Ultra: Full Comparison",
-    date: "2024-12-15",
-    author: "Tech Expert",
-    category: "Comparisons",
-    readTime: "8 min read",
-    content: `
-      <h2>Performance and Processing Power</h2>
-      <p>The iPhone 16 Pro features Apple's latest A18 Pro chip, delivering exceptional performance for both everyday tasks and demanding applications. Meanwhile, the Samsung Galaxy S25 Ultra is powered by the Snapdragon 8 Gen 3 processor, offering competitive performance with superior multitasking capabilities.</p>
-      
-      <h2>Camera Systems Compared</h2>
-      <p>Both phones excel in photography, but with different approaches. The iPhone 16 Pro's camera system focuses on computational photography and video recording, while the Samsung S25 Ultra offers more manual controls and zoom capabilities with its periscope telephoto lens.</p>
-      
-      <h2>Display Quality and Design</h2>
-      <p>The Samsung S25 Ultra features a larger 6.8-inch Dynamic AMOLED display with S Pen support, while the iPhone 16 Pro offers a 6.3-inch Super Retina XDR display with ProMotion technology. Both provide excellent color accuracy and brightness.</p>
-      
-      <h2>Battery Life and Charging</h2>
-      <p>Samsung takes the lead in battery capacity and charging speed, while iPhone 16 Pro offers more consistent battery optimization through iOS integration.</p>
-      
-      <h2>Value for Money</h2>
-      <p>Consider your ecosystem preference, usage patterns, and budget when choosing between these flagship devices. Both offer premium experiences with different strengths.</p>
-    `,
-  },
-  "samsung-galaxy-s24-ultra-features": {
-    title: "Galaxy S24 Ultra Features and Specs Explained",
-    date: "2024-12-10",
-    author: "Mobile Reviewer",
-    category: "Reviews",
-    readTime: "6 min read",
-    content: `
-      <h2>S Pen Integration and Productivity</h2>
-      <p>The Galaxy S24 Ultra's S Pen offers precision input for note-taking, drawing, and navigation. With improved latency and pressure sensitivity, it's perfect for professionals and creatives.</p>
-      
-      <h2>Camera Capabilities</h2>
-      <p>Featuring a 200MP main sensor, the S24 Ultra delivers exceptional photo quality with advanced zoom capabilities up to 100x Space Zoom. The camera system includes AI-enhanced features for better low-light performance.</p>
-      
-      <h2>AI Features and Smart Functions</h2>
-      <p>Samsung's Galaxy AI brings intelligent features like real-time translation, photo editing assistance, and smart suggestions to enhance your daily smartphone experience.</p>
-      
-      <h2>Performance and Gaming</h2>
-      <p>With the Snapdragon 8 Gen 3 processor and up to 12GB RAM, the S24 Ultra handles demanding games and multitasking with ease. The vapor cooling system ensures sustained performance.</p>
-      
-      <h2>Build Quality and Durability</h2>
-      <p>The titanium frame and Gorilla Glass Victus 2 provide premium feel and protection. IP68 water resistance ensures durability in various conditions.</p>
-    `,
-  },
-}
-
-const blogContent = { ...legacyContent, ...blogArticles }
+const blogContent = blogArticles
 
 interface BlogPostPageProps {
   params: {
