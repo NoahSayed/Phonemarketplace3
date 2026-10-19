@@ -1,4 +1,5 @@
 import type React from "react"
+import { Toaster } from "@/components/ui/toaster"
 import { pageMeta } from "@/lib/seo"
 
 export const metadata = pageMeta(
@@ -8,5 +9,10 @@ export const metadata = pageMeta(
 )
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return children
+  return (
+    <>
+      {children}
+      <Toaster />
+    </>
+  )
 }

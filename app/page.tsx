@@ -1,5 +1,4 @@
 import Link from "next/link"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { TypewriterText } from "@/components/ui/typewriter-text"
 import { ArrowRight, CheckCircle, Star, ShieldCheck, Clock, Smartphone, DollarSign, Zap } from "lucide-react"
@@ -15,6 +14,9 @@ export const metadata = pageMeta(
   "Sell your old phone online at Contreat.in for instant cash. Best buyback prices for used iPhone, Samsung and Pixel phones, free doorstep pickup and instant payment.",
   true,
 )
+
+const heroPhoneImg = (w: number) =>
+  `/_next/image?url=${encodeURIComponent("https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-1.jpg")}&w=${w}&q=75`
 
 export default function HomePage() {
   const brandData = [
@@ -281,28 +283,28 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
                       className="bg-transparent hover:bg-green-50 hover:border-green-300 transition-colors"
                       asChild
                     >
-                      <Link href="/brand/apple">Apple</Link>
+                      <Link href="/brand/apple" prefetch={false}>Apple</Link>
                     </Button>
                     <Button
                       variant="outline"
                       className="bg-transparent hover:bg-blue-50 hover:border-blue-300 transition-colors"
                       asChild
                     >
-                      <Link href="/brand/samsung">Samsung</Link>
+                      <Link href="/brand/samsung" prefetch={false}>Samsung</Link>
                     </Button>
                     <Button
                       variant="outline"
                       className="bg-transparent hover:bg-green-50 hover:border-green-300 transition-colors"
                       asChild
                     >
-                      <Link href="/brand/google">Google</Link>
+                      <Link href="/brand/google" prefetch={false}>Google</Link>
                     </Button>
                     <Button
                       variant="outline"
                       className="bg-transparent hover:bg-purple-50 hover:border-purple-300 transition-colors "
                       asChild
                     >
-                      <Link href="/brand/all-other-phones">Sell Other Phones</Link>
+                      <Link href="/brand/all-other-phones" prefetch={false}>Sell Other Phones</Link>
                     </Button>
                   </div>
                 </div>
@@ -552,12 +554,17 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
             {/* Phone Image  */}
             <div className="relative">
               <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden">
-                <Image
-                  src="https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-1.jpg"
+                {/* Plain <img> through the same /_next/image optimizer: next/image would add
+                    its client script to the home page just for this one below-the-fold photo. */}
+                <img
+                  src={heroPhoneImg(828)}
+                  srcSet={[384, 640, 828, 1080].map((w) => `${heroPhoneImg(w)} ${w}w`).join(", ")}
+                  sizes="(max-width: 1024px) 90vw, 570px"
                   alt="second hand iPhone 15 for sale"
                   width={570}
                   height={650}
-                  sizes="(max-width: 1024px) 90vw, 570px"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-contain p-8"
                 />
               </div>

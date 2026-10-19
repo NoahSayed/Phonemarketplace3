@@ -1,7 +1,6 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import "./globals.css"
-import { Toaster } from "@/components/ui/toaster"
 import { SiteAnalytics } from "@/components/site-analytics"
 
 export const viewport: Viewport = {
@@ -135,7 +134,6 @@ export default function RootLayout({
       </head>
       <body>
         <main>{children}</main>
-        <Toaster />
         <SiteAnalytics />
       </body>
     </html>

@@ -1,6 +1,4 @@
-"use client"
-import { useState } from "react"
-import { ChevronDown, ChevronUp } from "lucide-react"
+import { ChevronDown } from "lucide-react"
 
 interface FAQItem {
   question: string
@@ -83,18 +81,6 @@ const faqData: FAQItem[] = [
 ]
 
 export default function FAQAccordion() {
-  const [openItems, setOpenItems] = useState<Set<number>>(new Set())
-
-  const toggleItem = (index: number) => {
-    const newOpenItems = new Set(openItems)
-    if (newOpenItems.has(index)) {
-      newOpenItems.delete(index)
-    } else {
-      newOpenItems.add(index)
-    }
-    setOpenItems(newOpenItems)
-  }
-
   // Generate FAQ Schema for SEO
   const faqSchema = {
     "@context": "https://schema.org",
@@ -119,44 +105,23 @@ export default function FAQAccordion() {
       
       <div className="max-w-4xl mx-auto space-y-4">
         {faqData.map((item, index) => (
-          <div
+          <details
             key={index}
-            className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
+            className="group bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
           >
-            <button
-              onClick={() => toggleItem(index)}
-              className="w-full px-6 py-4 text-left focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-inset"
-              aria-expanded={openItems.has(index)}
-              aria-controls={`faq-answer-${index}`}
-            >
+            <summary className="list-none [&::-webkit-details-marker]:hidden cursor-pointer w-full px-6 py-4 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-inset">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-gray-900 pr-4">
-                  {item.question}
-                </h3>
-                <div className="flex-shrink-0">
-                  {openItems.has(index) ? (
-                    <ChevronUp className="h-5 w-5 text-green-700 transition-transform duration-200" />
-                  ) : (
-                    <ChevronDown className="h-5 w-5 text-gray-400 transition-transform duration-200" />
-                  )}
-                </div>
+                <h3 className="text-lg font-semibold text-gray-900 pr-4">{item.question}</h3>
+                <ChevronDown
+                  className="h-5 w-5 flex-shrink-0 text-gray-400 transition-transform duration-200 group-open:rotate-180 group-open:text-green-700"
+                  aria-hidden="true"
+                />
               </div>
-            </button>
-            
-            <div
-              id={`faq-answer-${index}`}
-              className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                openItems.has(index) ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-              }`}
-              aria-hidden={!openItems.has(index)}
-            >
-              <div className="px-6 pb-4">
-                <p className="text-gray-700 leading-relaxed">
-                  {item.answer}
-                </p>
-              </div>
+            </summary>
+            <div className="px-6 pb-4">
+              <p className="text-gray-700 leading-relaxed">{item.answer}</p>
             </div>
-          </div>
+          </details>
         ))}
       </div>
     </>

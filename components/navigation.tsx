@@ -3,8 +3,17 @@
 import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation" // Added usePathname hook for active state detection
-import { Button } from "@/components/ui/button"
-import { Menu, X, Smartphone } from "lucide-react"
+const icon = {
+  width: 24,
+  height: 24,
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 2,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+  "aria-hidden": true,
+}
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -37,7 +46,10 @@ const Navigation = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-green-700 rounded-lg flex items-center justify-center">
-              <Smartphone className="h-5 w-5 text-white" />
+              <svg {...icon} className="h-5 w-5 text-white">
+                <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+                <path d="M12 18h.01" />
+              </svg>
             </div>
             <span className="text-xl font-bold text-gray-900">Sell Old Phone</span>
           </Link>
@@ -61,16 +73,26 @@ const Navigation = () => {
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="sm"
+            <button
+              type="button"
               onClick={toggleMenu}
-              className="p-2"
+              className="inline-flex items-center justify-center rounded-md p-2 text-gray-900 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMenuOpen}
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
+              {isMenuOpen ? (
+                <svg {...icon} className="h-6 w-6">
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              ) : (
+                <svg {...icon} className="h-6 w-6">
+                  <path d="M4 12h16" />
+                  <path d="M4 6h16" />
+                  <path d="M4 18h16" />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
 

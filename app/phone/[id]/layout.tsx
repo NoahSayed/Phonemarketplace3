@@ -1,4 +1,5 @@
 import type React from "react"
+import { Toaster } from "@/components/ui/toaster"
 import { notFound } from "next/navigation"
 import { getPhoneById, phoneData } from "@/lib/phone-data"
 import { breadcrumbJsonLd, pageMeta } from "@/lib/seo"
@@ -38,6 +39,7 @@ export default function PhoneLayout({ children, params }: { children: React.Reac
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {children}
+      <Toaster />
       {/* Static sections rendered on the server, so the page only hydrates the price form. */}
       <PhoneFaqSection phone={phone} />
       <RelatedPhones phone={phone} />
