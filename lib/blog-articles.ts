@@ -532,10 +532,91 @@ const foldables = `
   <a href="/blog/what-to-do-before-selling-your-phone">checklist before selling</a> covers each step. Selling a Galaxy S model instead?
   See the <a href="/blog/samsung-galaxy-resale-value-india">Samsung Galaxy price list</a>.</p>`
 
+const imeiGuide = `
+  <p>The IMEI is a 15-digit number that identifies your phone. Buyers ask for it to check the phone is not reported stolen
+  or blacklisted. Here is how to find it and check it in India.</p>
+
+  <h2>How to find your IMEI number</h2>
+  <ul>
+    <li><strong>Any phone:</strong> open the dialler and type <strong>*#06#</strong>. The IMEI appears on screen.</li>
+    <li><strong>iPhone:</strong> Settings → General → About, then scroll to IMEI.</li>
+    <li><strong>Samsung and other Android phones:</strong> Settings → About phone → IMEI (on some phones under Status).</li>
+    <li><strong>Box and bill:</strong> the IMEI is printed on the label on the box and usually on the purchase bill.</li>
+  </ul>
+  <p>Dual-SIM phones have two IMEI numbers, one for each SIM slot. Check that the number on the phone matches the box and bill.</p>
+
+  <h2>How to check an IMEI in India</h2>
+  <p>The Department of Telecommunications runs the <strong>Sanchar Saathi</strong> portal (sancharsaathi.gov.in). Its
+  "Know Your Mobile" service shows whether an IMEI is valid, and whether it is blacklisted, reported stolen or already in use.
+  You can also send an SMS: <strong>KYM &lt;15-digit IMEI&gt;</strong> to <strong>14422</strong>.</p>
+
+  <h2>Why it matters when you sell</h2>
+  <ul>
+    <li>A phone whose IMEI is blocked cannot be used on Indian networks, so no honest buyer will take it.</li>
+    <li>If you blocked your own phone after losing it and later found it, unblock it on Sanchar Saathi before selling.</li>
+    <li>Keep the bill: it links the IMEI to you and shows the phone's age, which sets the price
+    (see <a href="/blog/how-old-phone-price-is-calculated">how the price is calculated</a>).</li>
+  </ul>
+
+  <h2>Never share these instead</h2>
+  <p>A buyer needs the IMEI, never your OTPs, passwords or Apple ID / Google account details. Sign out of your accounts before
+  selling with our <a href="/blog/what-to-do-before-selling-your-phone">checklist before selling your phone</a>.</p>
+
+  <p>Ready to sell? Get your price for an <a href="/brand/apple">iPhone</a>, <a href="/brand/samsung">Samsung</a>,
+  <a href="/brand/google">Pixel</a> or <a href="/brand/all-other-phones">any other phone</a>.</p>`
+
+const findModelGuide = `
+  <p>To get the right price for your phone you need its exact model. iPhone 15 and iPhone 15 Plus, or Galaxy S24 and S24+,
+  look alike but sell for different prices. Here is how to check.</p>
+
+  <h2>iPhone</h2>
+  <p>Open <strong>Settings → General → About</strong>. <strong>Model Name</strong> shows the name, for example iPhone 15 Pro.
+  The <strong>Model Number</strong> starts with M or A; tap it to switch to the A number, which identifies the exact model.
+  Storage is shown as <strong>Capacity</strong> on the same screen.</p>
+
+  <h2>Samsung Galaxy</h2>
+  <p>Open <strong>Settings → About phone</strong>. You will see the name (for example Galaxy S24 Ultra) and the model number,
+  which starts with SM-. Storage is under <strong>Settings → Battery and device care → Storage</strong>
+  (on older phones, Settings → Device care → Storage).</p>
+
+  <h2>Google Pixel</h2>
+  <p>Open <strong>Settings → About phone</strong>. The model name is shown under <strong>Device name</strong> or
+  <strong>Model</strong>. Storage is under <strong>Settings → Storage</strong>.</p>
+
+  <h2>Other Android phones</h2>
+  <p>Most phones show the model under <strong>Settings → About phone</strong>. If the phone does not turn on, check the label
+  on the original box or the purchase bill.</p>
+
+  <h2>Find your price</h2>
+  <p>Once you know the model, open it on Contreat and pick the storage you saw:</p>
+  <ul>
+    <li><a href="/brand/apple">All iPhones we buy</a> (<a href="/blog/iphone-resale-value-india">price list</a>)</li>
+    <li><a href="/brand/samsung">All Samsung Galaxy phones</a> (<a href="/blog/samsung-galaxy-resale-value-india">price list</a>)</li>
+    <li><a href="/brand/google">All Google Pixel phones</a> (<a href="/blog/google-pixel-resale-value-india">price list</a>)</li>
+    <li><a href="/brand/all-other-phones">Any other phone</a></li>
+  </ul>
+  <p>Check your phone's battery too: see <a href="/blog/check-battery-health-before-selling">how to check battery health</a>.</p>`
+
 export const blogArticles: Record<
   string,
   { title: string; date: string; author: string; category: string; readTime: string; content: string }
 > = {
+  "how-to-check-imei-number": {
+    title: "How to Check Your Phone's IMEI Number (and Verify It in India)",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Selling Tips",
+    readTime: "3 min read",
+    content: imeiGuide,
+  },
+  "how-to-find-your-phone-model": {
+    title: "How to Find Your Phone Model and Storage Size",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Selling Tips",
+    readTime: "3 min read",
+    content: findModelGuide,
+  },
   "iphone-16-pro-vs-samsung-s25-ultra": {
     title: "iPhone 16 Pro vs Galaxy S25 Ultra: Specs and Resale Value",
     date: "2026-10-19",

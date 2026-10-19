@@ -1,6 +1,28 @@
 // Blog post list, shared by the blog index and the Article structured data.
 export const blogPosts = [
   {
+    id: "how-to-check-imei-number",
+    title: "How to Check Your Phone's IMEI Number (and Verify It in India)",
+    excerpt:
+      "Find your phone's IMEI with *#06#, in Settings or on the box, and check if it is blacklisted or stolen on Sanchar Saathi before you sell.",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Selling Tips",
+    keywords: ["how to check IMEI number", "IMEI check India", "Sanchar Saathi KYM", "check phone stolen"],
+    readTime: "3 min read",
+  },
+  {
+    id: "how-to-find-your-phone-model",
+    title: "How to Find Your Phone Model and Storage Size",
+    excerpt:
+      "Where to find the exact model name, model number and storage on an iPhone, Samsung Galaxy or Google Pixel, so you get the right price.",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Selling Tips",
+    keywords: ["how to find phone model", "which iPhone do I have", "check iPhone model number", "Samsung model number"],
+    readTime: "3 min read",
+  },
+  {
     id: "sell-broken-phone",
     title: "Sell a Broken Phone: What a Cracked or Faulty Phone Is Worth",
     excerpt:
