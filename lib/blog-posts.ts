@@ -1,6 +1,28 @@
 // Blog post list, shared by the blog index and the Article structured data.
 export const blogPosts = [
   {
+    id: "sell-broken-phone",
+    title: "Sell a Broken Phone: What a Cracked or Faulty Phone Is Worth",
+    excerpt:
+      "Cracked screen, dead display or broken Face ID? See how much each problem lowers your phone's price and whether to repair first.",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Selling Tips",
+    keywords: ["sell broken phone", "sell cracked phone", "sell damaged mobile", "broken iPhone price"],
+    readTime: "4 min read",
+  },
+  {
+    id: "best-time-to-sell-your-iphone",
+    title: "Best Time to Sell Your iPhone (and Get the Most for It)",
+    excerpt:
+      "Phone prices drop in steps at 3, 6 and 11 months. See when to sell your iPhone to keep the most of its value.",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Selling Tips",
+    keywords: ["best time to sell iPhone", "when to sell iPhone", "iPhone resale value drop", "sell iPhone before new launch"],
+    readTime: "4 min read",
+  },
+  {
     id: "iphone-resale-value-india",
     title: "iPhone Resale Value in India 2026: Price for Every Model",
     excerpt:

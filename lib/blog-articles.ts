@@ -172,10 +172,101 @@ const mumbai = `
   <p>Back up your data, sign out of your Apple or Google account and reset the phone. Our
   <a href="/blog/what-to-do-before-selling-your-phone">checklist before selling your phone</a> covers each step.</p>`
 
+
+function brokenPhoneArticle() {
+  const ex = getBrandPhones("Apple").find((p) => p.id === "used-iphone-13") ?? getBrandPhones("Apple")[0]
+  const cracked = quotePrice(ex.basePrice, { selected: ["age_11_plus", "glass_cracked"], hasBox: true, hasCharger: true })
+  const display = quotePrice(ex.basePrice, { selected: ["age_11_plus", "no_display"], hasBox: true, hasCharger: true })
+  const pct = (id: string) => deductionGroups.flatMap((g) => g.options).find((o) => o.id === id)?.percent
+  return `
+    <p>A cracked or faulty phone still has value. Contreat buys damaged phones: each problem takes a fixed percentage off
+    the model's price, so you know what you will get before pickup.</p>
+
+    <h2>How much is a broken phone worth?</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Problem</th><th>Price lowered by</th></tr></thead>
+      <tbody>
+        <tr><td>Screen glass cracked</td><td>${pct("glass_cracked")}%</td></tr>
+        <tr><td>Lines, dots, colour fade, flickering or no display</td><td>${pct("no_display")}%</td></tr>
+        <tr><td>Touch not working</td><td>${pct("touch_not_working")}%</td></tr>
+        <tr><td>Back glass broken</td><td>${pct("back_glass_broken")}%</td></tr>
+        <tr><td>Face ID not working</td><td>${pct("face_id_not_working")}%</td></tr>
+        <tr><td>Wi-Fi or audio IC problem</td><td>${pct("wifi_issues")}%</td></tr>
+        <tr><td>Back camera not working</td><td>${pct("back_camera_not_working")}%</td></tr>
+        <tr><td>Charging port, speaker or faulty battery</td><td>${pct("charging_port_issue")}%</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Example: iPhone 13 with a cracked screen</h2>
+    <p>The ${phoneLink(ex)} has a top price of ${inr(ex.basePrice)}. One that is over 11 months old with cracked screen glass
+    (25% + 45%) gets <strong>${inr(cracked)}</strong>. With no display at all (25% + 50%) it gets <strong>${inr(display)}</strong>.</p>
+
+    <h2>Should you repair before selling?</h2>
+    <p>Usually not. Compare the repair cost with the deduction: on a phone with a high top price, a screen repair can add more
+    than it costs, but on older models the repair often costs more than the price difference. Get a free quote for both
+    conditions on your model's page and compare them with the repair price before you decide.</p>
+
+    <h2>Before you sell a broken phone</h2>
+    <p>If the screen still works, back up and reset it with our <a href="/blog/what-to-do-before-selling-your-phone">checklist</a>.
+    If you cannot use the screen, sign out of the phone from another device: on iPhone, remove it from Find My at icloud.com;
+    on Android, remove it from your Google account at myaccount.google.com.</p>
+
+    <p>Get your price: <a href="/brand/apple">iPhone</a>, <a href="/brand/samsung">Samsung</a>, <a href="/brand/google">Pixel</a>
+    or <a href="/brand/all-other-phones">any other phone</a>. See <a href="/blog/how-old-phone-price-is-calculated">every deduction</a>.</p>`
+}
+
+function bestTimeArticle() {
+  const ex = getBrandPhones("Apple").find((p) => p.id === "used-iphone-16") ?? getBrandPhones("Apple")[0]
+  const at = (id?: string) => quotePrice(ex.basePrice, { selected: id ? [id] : [], hasBox: true, hasCharger: true })
+  return `
+    <p>The price of a used phone drops as it gets older. On Contreat the drop happens in steps, so a few weeks can change
+    your price a lot.</p>
+
+    <h2>The age steps</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Phone age (from the bill)</th><th>Price lowered by</th><th>${ex.name} example</th></tr></thead>
+      <tbody>
+        <tr><td>0–3 months</td><td>0%</td><td>${inr(at())}</td></tr>
+        <tr><td>3–6 months</td><td>11%</td><td>${inr(at("age_3_6"))}</td></tr>
+        <tr><td>6–11 months</td><td>18%</td><td>${inr(at("age_6_11"))}</td></tr>
+        <tr><td>More than 11 months</td><td>25%</td><td>${inr(at("age_11_plus"))}</td></tr>
+      </tbody>
+    </table></div>
+    <p>Prices for a ${phoneLink(ex)} in good condition with box and charger.</p>
+
+    <h2>When to sell</h2>
+    <ul>
+      <li><strong>Just before a step.</strong> If your phone is 5 months old, selling before 6 months keeps 7% more of the price.</li>
+      <li><strong>Before the new iPhone launches.</strong> Apple usually announces new iPhones in September. When a newer model is out,
+      the top price of older models is often lowered, so selling in August usually beats selling in October.</li>
+      <li><strong>Before damage happens.</strong> A cracked screen takes off 45%, far more than any age step.</li>
+    </ul>
+
+    <h2>Check your price now</h2>
+    <p>See the full <a href="/blog/iphone-resale-value-india">iPhone resale price list</a> or get a quote for
+    <a href="/brand/apple">your iPhone</a>, <a href="/brand/samsung">Samsung</a> or <a href="/brand/google">Pixel</a>.</p>`
+}
+
 export const blogArticles: Record<
   string,
   { title: string; date: string; author: string; category: string; readTime: string; content: string }
 > = {
+  "sell-broken-phone": {
+    title: "Sell a Broken Phone: What a Cracked or Faulty Phone Is Worth",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Selling Tips",
+    readTime: "4 min read",
+    content: brokenPhoneArticle(),
+  },
+  "best-time-to-sell-your-iphone": {
+    title: "Best Time to Sell Your iPhone (and Get the Most for It)",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Selling Tips",
+    readTime: "3 min read",
+    content: bestTimeArticle(),
+  },
   "iphone-resale-value-india": {
     title: "iPhone Resale Value in India 2026: Price for Every Model",
     date: "2026-10-19",
