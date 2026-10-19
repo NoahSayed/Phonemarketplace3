@@ -130,9 +130,29 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             <div className="article-body max-w-none text-lg" dangerouslySetInnerHTML={{ __html: post.content }} />
           </div>
 
+          {/* More guides */}
+          <nav aria-label="More guides" className="mt-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">More selling guides</h2>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {blogPosts
+                .filter((p) => p.id !== params.slug)
+                .slice(0, 4)
+                .map((p) => (
+                  <li key={p.id}>
+                    <Link
+                      href={`/blog/${p.id}`}
+                      className="block h-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-800 hover:border-green-700 hover:text-green-700 transition-colors"
+                    >
+                      {p.title}
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+          </nav>
+
           {/* Related Articles CTA */}
           <div className="mt-12 p-8 bg-green-50 rounded-xl">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to Sell Your Phone?</h3>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to Sell Your Phone?</h2>
             <p className="text-gray-600 mb-6">
               Get the best price for your smartphone with our expert evaluation and instant quotes.
             </p>
