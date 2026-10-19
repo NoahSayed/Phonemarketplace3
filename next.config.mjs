@@ -59,6 +59,11 @@ const nextConfig = {
     return [
       // Only redirect the most common search terms to your real pages
       {
+        source: '/blog/best-phones-to-sell-2024',
+        destination: '/blog/best-phones-to-sell',
+        permanent: true,
+      },
+      {
         source: '/sell-iphone',
         destination: '/brand/apple',
         permanent: true,

@@ -1,4 +1,4 @@
-import { getBrandPhones, type PhoneModel } from "@/lib/phone-data"
+import { getBrandPhones, phoneData, type PhoneModel } from "@/lib/phone-data"
 import { deductionGroups, MISSING_BOX_PERCENT, MISSING_CHARGER_PERCENT, quotePrice } from "@/lib/price-formula"
 
 // Blog posts written for search: price guides built from the live phone data and
@@ -247,10 +247,156 @@ function bestTimeArticle() {
     <a href="/brand/apple">your iPhone</a>, <a href="/brand/samsung">Samsung</a> or <a href="/brand/google">Pixel</a>.</p>`
 }
 
+function bestPhonesArticle() {
+  const top = (brand: "Apple" | "Samsung" | "Google", n: number) =>
+    [...getBrandPhones(brand)].sort((a, b) => b.basePrice - a.basePrice).slice(0, n)
+  const rows = (phones: PhoneModel[]) =>
+    phones.map((p) => `<tr><td>${phoneLink(p)}</td><td>${inr(p.basePrice)}</td><td>${inr(yearOld(p))}</td></tr>`).join("")
+  const table = (phones: PhoneModel[]) => `<div class="table-wrap"><table>
+    <thead><tr><th>Model</th><th>Like new</th><th>Over 11 months, good condition</th></tr></thead>
+    <tbody>${rows(phones)}</tbody></table></div>`
+  const all = [...phoneData].sort((a, b) => b.basePrice - a.basePrice)
+  const over20k = all.filter((p) => yearOld(p) >= 20000).length
+  return `
+    <p>Which phones are worth the most when you sell them? This list is built from the prices Contreat pays today for the
+    ${all.length} models we list. "Like new" means less than 3 months old, with box and charger and no damage.
+    The last column is what most people get: a phone older than 11 months in good condition, with box and charger.</p>
+
+    <h2>iPhones that sell for the most</h2>
+    ${table(top("Apple", 6))}
+    <p>See the price of every model in the <a href="/blog/iphone-resale-value-india">iPhone resale price list</a>.</p>
+
+    <h2>Samsung Galaxy phones that sell for the most</h2>
+    ${table(top("Samsung", 5))}
+    <p>Full list: <a href="/blog/samsung-galaxy-resale-value-india">Samsung Galaxy resale prices</a>.</p>
+
+    <h2>Google Pixel phones that sell for the most</h2>
+    ${table(top("Google", 5))}
+    <p>Full list: <a href="/blog/google-pixel-resale-value-india">Google Pixel resale prices</a>.</p>
+
+    <h2>What the list shows</h2>
+    <ul>
+      <li><strong>Newer flagships are worth the most.</strong> ${over20k} of the ${all.length} models we list still get ₹20,000 or more
+      after a year in good condition.</li>
+      <li><strong>Pro and Ultra models hold more rupees.</strong> They start higher, so the same percentage deductions leave more money.</li>
+      <li><strong>Condition matters as much as the model.</strong> Cracked screen glass takes off 45%, which can make a flagship
+      worth less than a cheaper phone in perfect condition.</li>
+    </ul>
+
+    <h2>Get the most for your phone</h2>
+    <p>Sell before the next age step (see <a href="/blog/best-time-to-sell-your-iphone">the best time to sell</a>), keep the box,
+    charger and bill, and <a href="/blog/what-to-do-before-selling-your-phone">reset the phone properly</a> before pickup.
+    Every deduction is listed in <a href="/blog/how-old-phone-price-is-calculated">how your old phone's price is calculated</a>.</p>`
+}
+
+const sellOnline = `
+  <p>Selling your old phone online takes a few minutes: you get a price from your model and condition, and the buyer comes
+  to you. Here is how it works on Contreat, and what to check on any site you use.</p>
+
+  <h2>Step by step</h2>
+  <ol>
+    <li><strong>Find your model.</strong> Choose <a href="/brand/apple">iPhone</a>, <a href="/brand/samsung">Samsung Galaxy</a>,
+    <a href="/brand/google">Google Pixel</a> or <a href="/brand/all-other-phones">any other brand</a>.</li>
+    <li><strong>Pick storage and condition.</strong> Age, screen, body and anything that does not work. The price updates as you choose.</li>
+    <li><strong>Send the form.</strong> Add your name and phone number.</li>
+    <li><strong>We call you.</strong> We confirm the price and agree a pickup time.</li>
+    <li><strong>Free pickup and payment.</strong> We check the phone at your door and pay you at pickup.</li>
+  </ol>
+
+  <h2>What decides the price</h2>
+  <p>Every model has a top price for a phone that is less than 3 months old, with box and charger and no damage. Each problem
+  takes off a fixed percentage:</p>
+  <ul>
+    <li>Age: 11% after 3 months, 18% after 6 months, 25% after 11 months.</li>
+    <li>Screen: 3% for 1–2 scratches, 45% for cracked glass, 50% for lines, dots or no display.</li>
+    <li>Missing box ${MISSING_BOX_PERCENT}%, missing charger ${MISSING_CHARGER_PERCENT}%.</li>
+  </ul>
+  <p>The full list is in <a href="/blog/how-old-phone-price-is-calculated">how your old phone's price is calculated</a>.
+  For model prices see the <a href="/blog/iphone-resale-value-india">iPhone</a>,
+  <a href="/blog/samsung-galaxy-resale-value-india">Samsung</a> and <a href="/blog/google-pixel-resale-value-india">Pixel</a> price lists.</p>
+
+  <h2>Before you hand the phone over</h2>
+  <ul>
+    <li>Back up photos, chats and contacts.</li>
+    <li>Sign out of your Apple ID or Google account so the next owner can use the phone.</li>
+    <li>Remove your SIM and memory card, then factory reset.</li>
+  </ul>
+  <p>Our <a href="/blog/what-to-do-before-selling-your-phone">checklist before selling your phone</a> covers each step for iPhone and Android.</p>
+
+  <h2>How to sell safely online</h2>
+  <ul>
+    <li><strong>Get the price before pickup.</strong> A buyer who will not say what they pay until they hold the phone can lower it at your door.</li>
+    <li><strong>Know the deductions.</strong> If the price changes at pickup, ask which condition was different.</li>
+    <li><strong>Never share OTPs or passwords.</strong> No buyer needs them.</li>
+    <li><strong>Keep the bill.</strong> It proves the phone is yours and sets its age.</li>
+  </ul>
+
+  <p>Selling a damaged phone? See <a href="/blog/sell-broken-phone">what a broken phone is worth</a>.
+  In Mumbai? See <a href="/blog/sell-old-phone-mumbai">selling your old phone in Mumbai</a>.</p>`
+
+const buybackOptions = `
+  <p>There are four common ways to sell a used phone in India. Each one trades price against time and risk.</p>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Option</th><th>Price</th><th>Time and effort</th><th>Risk</th></tr></thead>
+    <tbody>
+      <tr><td>Online buyback (like Contreat)</td><td>Fixed price from your model and condition</td><td>A few minutes online, free pickup</td><td>Low: price agreed before pickup</td></tr>
+      <tr><td>Exchange offer on a new phone</td><td>Paid as a discount, only if you buy a new phone from the same seller</td><td>Low</td><td>Value can drop if the phone fails the check at delivery</td></tr>
+      <tr><td>Selling to a stranger (OLX, Facebook Marketplace)</td><td>Can be higher</td><td>Listing, calls, bargaining and meetings</td><td>Higher: fake payments and no-shows</td></tr>
+      <tr><td>Local mobile shop</td><td>Depends on bargaining</td><td>Visiting shops</td><td>Medium: price set at the counter</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>When online buyback makes sense</h2>
+  <p>Choose buyback when you want cash quickly without bargaining or meeting strangers, or when the phone is damaged:
+  most private buyers avoid damaged phones, but buyback sites still pay for them
+  (see <a href="/blog/sell-broken-phone">what a broken phone is worth</a>).</p>
+
+  <h2>How mobile buyback works on Contreat</h2>
+  <ol>
+    <li>Open your model and choose storage and condition. The price is calculated from a
+    <a href="/blog/how-old-phone-price-is-calculated">published list of deductions</a>.</li>
+    <li>Send the form. We call you to confirm the price and a pickup time.</li>
+    <li>We check the phone at your door and pay you at pickup.</li>
+  </ol>
+
+  <h2>Compare before you sell</h2>
+  <p>Check your model's price in the <a href="/blog/iphone-resale-value-india">iPhone</a>,
+  <a href="/blog/samsung-galaxy-resale-value-india">Samsung Galaxy</a> or <a href="/blog/google-pixel-resale-value-india">Google Pixel</a>
+  price list, then compare it with exchange offers and other buyers. Whoever you choose,
+  <a href="/blog/what-to-do-before-selling-your-phone">back up and reset the phone</a> first.</p>
+
+  <p>Get your quote: <a href="/brand/apple">iPhone</a>, <a href="/brand/samsung">Samsung</a>, <a href="/brand/google">Pixel</a>
+  or <a href="/brand/all-other-phones">any other phone</a>.</p>`
+
 export const blogArticles: Record<
   string,
   { title: string; date: string; author: string; category: string; readTime: string; content: string }
 > = {
+  "best-phones-to-sell": {
+    title: "Best Phones to Sell in 2026: Models That Hold Their Value",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Price Guides",
+    readTime: "4 min read",
+    content: bestPhonesArticle(),
+  },
+  "sell-old-phone-online-india": {
+    title: "How to Sell Your Old Phone Online in India (2026 Guide)",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Selling Tips",
+    readTime: "4 min read",
+    content: sellOnline,
+  },
+  "mobile-buyback-india-guide": {
+    title: "Mobile Buyback in India: Ways to Sell Your Used Phone Compared",
+    date: "2026-10-19",
+    author: "Contreat Team",
+    category: "Selling Tips",
+    readTime: "4 min read",
+    content: buybackOptions,
+  },
   "sell-broken-phone": {
     title: "Sell a Broken Phone: What a Cracked or Faulty Phone Is Worth",
     date: "2026-10-19",

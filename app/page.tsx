@@ -132,7 +132,7 @@ const comprehensiveQuickLinks: Record<string, Array<{ name: string; href: string
   { name: "Sell Used Pixel 9", href: "/phone/used-pixel-9" },
   { name: "Sell Used Pixel 8", href: "/phone/used-pixel-8" },
   { name: "Sell Used Pixel 7", href: "/phone/used-pixel-7" },
-  { name: "Sell Old Phone Online India:", href: "/blog/sell-old-phone-online-india" },
+  { name: "Sell Old Phone Online in India", href: "/blog/sell-old-phone-online-india" },
 ],
   
   
