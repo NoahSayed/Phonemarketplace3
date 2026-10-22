@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation" // Added usePathname hook for active state detection
+import { AdSlot } from "@/components/ad-slot"
 const icon = {
   width: 24,
   height: 24,
@@ -40,6 +41,7 @@ const Navigation = () => {
   ]
 
   return (
+    <>
     <nav className="bg-white shadow-sm border-b sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -119,6 +121,8 @@ const Navigation = () => {
         )}
       </div>
     </nav>
+    <AdSlot placement="top" />
+    </>
   )
 }
 

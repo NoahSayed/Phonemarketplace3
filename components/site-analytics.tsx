@@ -3,8 +3,9 @@ import { useEffect } from "react"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { GA_ID, track } from "@/lib/analytics"
+import { AD_CLIENT } from "@/lib/ads"
 
-const ADSENSE_SRC = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+const ADSENSE_SRC = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${AD_CLIENT}`
 
 function addScript(src: string) {
   const s = document.createElement("script")

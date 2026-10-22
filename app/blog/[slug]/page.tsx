@@ -1,3 +1,6 @@
+import { Fragment } from "react"
+import { AdSlot } from "@/components/ad-slot"
+import { splitForAds } from "@/lib/ads"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import Link from "next/link"
@@ -78,7 +81,12 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
           {/* Article Content */}
           <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
-            <div className="article-body max-w-none text-lg" dangerouslySetInnerHTML={{ __html: post.content }} />
+            {splitForAds(post.content).map((part, i) => (
+              <Fragment key={i}>
+                {i > 0 && <AdSlot placement="inArticle" className="my-8" />}
+                <div className="article-body max-w-none text-lg" dangerouslySetInnerHTML={{ __html: part }} />
+              </Fragment>
+            ))}
           </div>
 
           {/* More guides */}

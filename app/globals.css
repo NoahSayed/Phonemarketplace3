@@ -261,3 +261,28 @@ html {
 .article-body th, .article-body td { border: 1px solid #e5e7eb; padding: 0.5em 0.75em; text-align: left; }
 .article-body th { background: #f9fafb; color: #111827; font-weight: 600; }
 .article-body .table-wrap { overflow-x: auto; }
+
+/* AdSense units (components/ad-slot.tsx). Space is kept while the ad loads, so the page
+   doesn't jump; an unfilled unit is hidden. */
+.ad-slot {
+  max-width: 80rem;
+  margin: 1rem auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+.ad-slot .ad-label {
+  display: block;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+.ad-slot-top ins.adsbygoogle { min-height: 100px; }
+.ad-slot-bottom ins.adsbygoogle { min-height: 250px; }
+.ad-slot-inArticle { padding: 0; }
+.ad-slot-inArticle ins.adsbygoogle { min-height: 200px; }
+@media (min-width: 768px) {
+  .ad-slot-top ins.adsbygoogle { min-height: 90px; }
+}
+.ad-slot:has(ins[data-ad-status="unfilled"]) { display: none; }
