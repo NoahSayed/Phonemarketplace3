@@ -130,7 +130,7 @@ export default function RootLayout({
             }),
           }}
         />
-        <meta name="google-adsense-account" content="ca-pub-9902910443810636" />
+        <meta name="google-adsense-account" content="ca-pub-2710815634222621" />
       </head>
       <body>
         <main>{children}</main>
